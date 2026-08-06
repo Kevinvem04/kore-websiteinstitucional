@@ -1,0 +1,84 @@
+'use client';
+
+import React, { useState, useMemo } from 'react';
+import Link from 'next/link';
+import styles from './ProjectsGrid.module.css';
+import { Client } from '@/types/client';
+
+interface ProjectsGridProps {
+  projects: Client[];
+}
+
+const CATEGORIES = [
+  'TODOS',
+  'ARTE',
+  'CULTURA',
+  'DESIGN',
+  'MODA',
+  'JOGOS',
+  'MÚSICA',
+  'ESPORTE',
+  'TECNOLOGIA'
+];
+
+export function ProjectsGrid({ projects }: ProjectsGridProps) {
+  const [activeCategory, setActiveCategory] = useState('TODOS');
+
+
+  // Filtra projetos
+  const filteredProjects = projects.filter(project => {
+    if (activeCategory === 'TODOS') return true;
+    return project.category?.toUpperCase() === activeCategory;
+  });
+
+  return (
+    <div className={styles.container}>
+      {/* Barra de Filtros */}
+      <nav className={styles.filterBar}>
+        <ul className={styles.filterList}>
+          {CATEGORIES.map(cat => (
+            <li key={cat} className={styles.filterItem}>
+              <button
+                className={`${styles.filterButton} ${activeCategory === cat ? styles.active : ''}`}
+                onClick={() => setActiveCategory(cat)}
+              >
+                {cat}
+              </button>
+            </li>
+          ))}
+        </ul>
+      </nav>
+
+      {/* Grid de Projetos */}
+      <div className={styles.grid}>
+        {filteredProjects.map((project, index) => (
+          <Link
+            key={project.slug}
+            href={project.link || `/projetos/${project.slug}`}
+            className={styles.card}
+            data-aos="fade-up"
+            data-aos-delay={index * 50}
+          >
+            <div className={styles.imageWrapper}>
+              <img
+                src={project.mainImage || '/logofull1.webp'}
+                alt={project.mainImageAlt || project.name}
+                className={styles.image}
+                loading="lazy"
+              />
+            </div>
+            
+            <div className={styles.overlay}>
+              <div className={styles.overlayContent}>
+                <h2 className={styles.projectName}>{project.name}</h2>
+                {project.subtitle && (
+                  <p className={styles.projectSubtitle}>{project.subtitle}</p>
+                )}
+              </div>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}

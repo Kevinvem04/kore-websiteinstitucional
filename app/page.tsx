@@ -1,69 +1,130 @@
-import Image from "next/image";
+'use client';
+
+import { Carousel } from '@/components/ui/Carousel';
+import { useSSE } from '@/hooks/useSSE';
+import { useState, useEffect } from 'react';
+import { Client } from '@/types/client';
+
+const clientsData: Client[] = [
+  {
+    slug: 'hello-tomorrow',
+    name: 'GWM',
+    subtitle: 'Hello, tomorrow',
+    description: 'Asia joga Beatles e Alok no liquidificador para criar a campanha de lançamento da GWM no Brasil. Filme foi produzido pela Untitled com direção dos Jungle.',
+    date: '2023',
+    link: '/projetos/hello-tomorrow',
+    mainImage: 'https://asiaxp.co/images/uploads/banners/desktop/hello-tomorrow.webp',
+    mainImageAlt: 'Hello, tomorrow.',
+    mainImageWidth: 700,
+    mainImageHeight: 517,
+    layoutVariant: 'big',
+    marqueeText: 'Hello, tomorrow. → GWM',
+    color: '#ff3900'
+  },
+  {
+    slug: 'guerreiros-asia',
+    name: 'Guerreiros Asia',
+    description: 'Na ASIA, buscamos diariamente ideias que se conectem com a cultura por meio de experiências físicas e digitais. Vigilantes e aguerridos, eles representam as 7 avenidas culturais.',
+    date: '2024',
+    link: '/projetos/guerreiros-asia',
+    mainImage: 'https://asiaxp.co/images/uploads/banners/desktop/capa.webp',
+    mainImageAlt: 'Guerreiros Asia',
+    mainImageWidth: 1212,
+    mainImageHeight: 933,
+    layoutVariant: 'big',
+    marqueeText: 'Guerreiros ASIA',
+    color: '#ff3900'
+  },
+  {
+    slug: 'esse-e-o-nosso-esporte',
+    name: 'ENGIE',
+    subtitle: 'ESSE É O NOSSO ESPORTE',
+    description: 'Partindo do insight de que a energia da natureza, que está transformando o mundo, é a mesma que transforma o ser humano através do esporte, criamos a nova campanha institucional da ENGIE sob o conceito "Transição energética, esse é o nosso esporte".',
+    date: '2023',
+    link: '/projetos/esse-e-o-nosso-esporte',
+    mainImage: 'https://asiaxp.co/images/uploads/banners/desktop/thumbspsd.webp',
+    mainImageAlt: 'ENGIE - ESSE É O NOSSO ESPORTE',
+    mainImageWidth: 700,
+    mainImageHeight: 517,
+    layoutVariant: 'small', // Design com foto compacta na esquerda e texto descritivo na direita (sob SOBRE)
+    color: '#2ac500'
+  },
+  {
+    slug: '100-eletrizante',
+    name: 'ORA 03',
+    subtitle: '100% ELETRIZANTE',
+    description: 'Para turbinar o lançamento do ORA 03, buscamos inspiração no trabalho do artista taiwanês Damon Hsieh para criar visuais impactantes.',
+    date: '2023',
+    link: '/projetos/100-eletrizante',
+    mainImage: 'https://asiaxp.co/images/uploads/banners/desktop/thumbs-destaque.webp',
+    mainImageAlt: 'ORA 03 - 100% ELETRIZANTE',
+    mainImageWidth: 900,
+    mainImageHeight: 506,
+    layoutVariant: 'big',
+    marqueeText: '0RA 03. 100% ELETRIZANTE',
+    color: '#ff3900'
+  },
+  {
+    slug: 'street-poetry',
+    name: 'MV BILL E SENNA',
+    subtitle: 'QUE CONEXÃO É ESSA?',
+    description: 'O novo filme da campanha Busque Sua Verdade traz o rapper carioca MV Bill apresentando Senna para gerações que não viram o piloto correr.',
+    date: '2024',
+    link: '/projetos/street-poetry',
+    mainImage: 'https://asiaxp.co/images/uploads/banners/desktop/mv-bill.webp',
+    mainImageAlt: 'MV BILL E SENNA',
+    mainImageWidth: 700,
+    mainImageHeight: 517,
+    layoutVariant: 'big',
+    marqueeText: 'MV BILL E SENNA, QUE CONEXÃO É ESSA?',
+    color: '#ff3900'
+  },
+  {
+    slug: 'asia-merch',
+    name: 'ASIA MERCH',
+    description: 'PORQUE A CRIATIVIDADE NUNCA SAI DE MODA. Criamos uma coleção de roupas e acessórios que une moda, design e outras avenidas culturais.',
+    date: '2024',
+    link: '/projetos/asia-merch',
+    mainImage: 'https://asiaxp.co/images/uploads/banners/desktop/sem-titulo-1.webp',
+    mainImageAlt: 'ASIA MERCH',
+    mainImageWidth: 1861,
+    mainImageHeight: 1188,
+    layoutVariant: 'small',
+    marqueeText: 'ASIA MERCH',
+    color: '#ff3900'
+  }
+];
 
 export default function Home() {
+  const event = useSSE('/api/events');
+  const [isReady, setIsReady] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useEffect(() => {
+    if (event?.type === 'SECTION_READY') {
+      setIsReady(true);
+    } else if (event?.type === 'TRIGGER_TRANSITION') {
+      if (typeof event.data?.index === 'number') {
+        setActiveIndex(event.data.index);
+      }
+    }
+  }, [event]);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsReady(true), 300);
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main className="flex min-h-screen flex-col items-center justify-between p-0">
+      <Carousel.Root
+        isReady={isReady}
+        totalSlides={clientsData.length}
+        activeIndex={activeIndex}
+        onIndexChange={setActiveIndex}
+        slidesData={clientsData}
+      />
+    </main>
   );
 }
+

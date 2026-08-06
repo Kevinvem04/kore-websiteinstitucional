@@ -1,0 +1,377 @@
+.sidebarHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 5.5rem;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.4rem 0;
+  z-index: 100;
+  background: #000000;
+
+  transition: background-color 0.3s;
+  pointer-events: auto;
+}
+
+.logo a {
+  display: block;
+  text-decoration: none;
+}
+
+.logoImg {
+  width: 3.2rem;
+  height: auto;
+  display: block;
+  /* Filtro para converter preto/branco para o vermelho #B72221 */
+  filter: brightness(0) saturate(100%) invert(18%) sepia(96%) saturate(2793%) hue-rotate(347deg) brightness(96%) contrast(89%);
+}
+
+.columnSlogan {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.columnSlogan>span {
+  display: inline-block;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  white-space: nowrap;
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 2px;
+  color: #ffffff;
+  opacity: 0.8;
+}
+
+.btMenu {
+  background: transparent;
+  border: none;
+  width: 35px;
+  height: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.svgIcon {
+  width: 100%;
+  height: 100%;
+}
+
+.bar {
+  fill: #ffffff;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+  transform-origin: center;
+}
+
+.menuActive .topbar {
+  transform: translateY(9.8px) rotate(45deg);
+}
+
+.menuActive .middlebar {
+  opacity: 0;
+}
+
+.menuActive .bottombar {
+  transform: translateY(-9.8px) rotate(-45deg);
+}
+
+/* Expanded Menu Overlay */
+.menuExpanded {
+  position: fixed;
+  top: 0;
+  left: 5.5rem;
+  width: calc(100vw - 5.5rem);
+  height: 100vh;
+  background: #ffffff;
+  z-index: 98;
+  display: flex;
+  visibility: hidden;
+  opacity: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s;
+}
+
+.menuExpanded.open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.menuContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+/* Left Column: Nav Menu */
+.columnNavMenu {
+  width: 60.3%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.navMenu {
+  height: 100%;
+  width: 100%;
+  display: block;
+}
+
+.menuList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.menuItem {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  border-bottom: 1px solid #ffffff;
+  width: 100%;
+}
+
+.menuItem:not(:last-child):after {
+  content: "";
+  width: 100%;
+  height: 2px;
+  background: #ffffff;
+  position: absolute;
+  border-bottom: 1px solid #070707;
+  bottom: 0;
+  left: 0;
+  z-index: 5;
+}
+
+.menuLink {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  text-decoration: none;
+  color: #000000e8;
+  font-size: clamp(2.5rem, 5vw, 6rem);
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: -2px;
+  padding-left: 4vw;
+  padding-right: 2vw;
+  overflow: hidden;
+  transition: color 0.4s ease;
+}
+
+/* Background Slide-Up Fill */
+.menuLink:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: #111111;
+  z-index: 1;
+  transform: translateY(105%);
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Orange Text Roll Attribute */
+.menuLink:after {
+  content: attr(data-letter);
+  position: absolute;
+  top: 50%;
+  left: 4vw;
+  transform: translateY(150%);
+  color: #ffffffea;
+  font-weight: 900;
+  white-space: nowrap;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+  pointer-events: none;
+}
+
+.linkText {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+  transition: transform 0.5s cubic-bezier(0.645, 0.045, 0.355, 1);
+}
+
+/* Hover State */
+.menuLink:hover:before {
+  transform: translateY(0);
+}
+
+.menuLink:hover .linkText {
+  transform: translateY(-150%);
+}
+
+.menuLink:hover:after {
+  transform: translateY(-50%);
+}
+
+/* Right Column: Social & Newsletter */
+.columnSocialMenu {
+  background: #B72221;
+  width: 39.7%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 4vw;
+}
+
+.topRow {
+  margin-bottom: 3rem;
+}
+
+.formTitle {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.5px;
+}
+
+.newsletterForm {
+  width: 100%;
+}
+
+.inputWrapper {
+  display: flex;
+  border-bottom: 2px solid #ffffffea;
+  padding-bottom: 0.5rem;
+}
+
+.emailInput {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ffffffe8;
+}
+
+.emailInput::placeholder {
+  color: #ffffffe8;
+}
+
+.submitBtn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  font-weight: 900;
+  cursor: pointer;
+  color: #ffffff;
+  padding: 0 0.5rem;
+  transition: transform 0.3s ease;
+}
+
+.submitBtn:hover {
+  transform: translateX(5px);
+}
+
+.bottomRow {
+  display: flex;
+  flex-direction: column;
+}
+
+.socialTitle {
+  font-size: 1rem;
+  font-weight: 900;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+}
+
+.socialList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.socialItem {
+  position: relative;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.socialLink {
+  text-decoration: none;
+  color: #ffffffe8;
+  font-size: 1.3rem;
+  font-weight: 900;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.socialLink:hover {
+  transform: translateX(10px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .sidebarHeader {
+    width: 100vw;
+    height: 5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    border-right: none;
+    border-bottom: 2px solid #000;
+  }
+
+  .columnSlogan {
+    display: none;
+  }
+
+  .menuExpanded {
+    top: 5rem;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 5rem);
+  }
+
+  .menuContainer {
+    flex-direction: column;
+    height: auto;
+    min-height: auto;
+    padding: 2rem 4vw 4vw 4vw;
+  }
+
+  .columnNavMenu {
+    width: 100%;
+    height: auto;
+    border-right: none;
+    margin-bottom: 2rem;
+  }
+
+  .menuItem {
+    flex: none;
+    height: 4.5rem;
+  }
+
+  .columnSocialMenu {
+    width: 100%;
+    height: auto;
+    padding: 2rem 0;
+  }
+}
