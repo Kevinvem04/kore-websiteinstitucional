@@ -15,8 +15,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   const galleryParagraphs = paragraphs.slice(2);
 
   let galleryClass = '';
-  if (slug === 'alvorada') galleryClass = styles.fullGallery;
-  if (slug === 'puff-dog' || slug === 'avabrum') galleryClass = styles.masonryGallery;
+  if (slug === 'alvorada' || slug === 'cafe-piranga' || slug === 'sigla') galleryClass = styles.fullGallery;
+  if (slug === 'puff-dog' || slug === 'avabrum' || slug === 'museu-feb' || slug === 'dr-pads') galleryClass = styles.masonryGallery;
 
   return (
     <div className={`${styles.container} ${galleryClass}`}>

@@ -56,24 +56,24 @@
   border-bottom: 2px solid #b72221;
 }
 
-/* Grid (Masonry Layout) */
+/* Grid */
 .grid {
-  column-count: 3;
-  column-gap: 2px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem; /* Aumentando o distanciamento */
   width: 100%;
-  padding: 2px;
+  padding: 1.5rem;
 }
 
 /* Card */
 .card {
   position: relative;
-  display: inline-block; /* Necessário para Masonry */
+  display: block;
   width: 100%;
-  margin-bottom: 2px;
-  break-inside: avoid; /* Evita que o card quebre no meio da coluna */
   overflow: hidden;
   background-color: #111111;
   text-decoration: none;
+  aspect-ratio: 16 / 9; /* Todas as capas do mesmo tamanho (wide) */
 }
 
 .imageWrapper {
@@ -83,9 +83,9 @@
 
 .image {
   width: 100%;
-  height: auto;
+  height: 100%;
   display: block;
-  object-fit: cover;
+  object-fit: cover; /* Garante que a imagem preencha o card 16:9 sem distorcer */
   transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
@@ -145,7 +145,7 @@
 /* Mobile Responsiveness */
 @media (max-width: 1024px) {
   .grid {
-    column-count: 2;
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
@@ -156,7 +156,9 @@
   }
   
   .grid {
-    column-count: 1;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 1rem;
   }
   
   .filterBar {
