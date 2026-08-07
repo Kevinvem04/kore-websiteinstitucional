@@ -7,6 +7,34 @@
   flex-direction: column;
 }
 
+/* Projects Header */
+.projectsHeader {
+  display: flex;
+  flex-direction: column;
+  padding: 4rem 2rem 2rem 1.5rem;
+  gap: 1rem;
+}
+
+.heroBrandText {
+  letter-spacing: -0.02em;
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 900;
+  color: #ffffff;
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+  font-family: 'Arial Black', Impact, sans-serif;
+}
+
+.headerCopy {
+  color: #a0a0a0;
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
+  max-width: 600px;
+  line-height: 1.4;
+  letter-spacing: 0.5px;
+}
+
 /* Filter Bar */
 .filterBar {
   width: 100%;
@@ -152,7 +180,11 @@
 @media (max-width: 768px) {
   .container {
     padding-left: 0;
-    padding-top: 5rem; /* Altura do header mobile */
+    padding-top: 0;
+  }
+
+  .projectsHeader {
+    padding: 6rem 1rem 1.5rem 1rem;
   }
   
   .grid {

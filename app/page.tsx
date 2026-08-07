@@ -3,10 +3,11 @@ import path from 'path';
 import { parseClientsCSV } from '@/lib/parseCSV';
 import { Client } from '@/types/client';
 import { HomeCarousel } from '@/components/ui/Carousel/HomeCarousel';
+import { Metadata } from 'next';
 
-export const metadata = {
-  title: 'Asia - Comunicação focada no que realmente importa.',
-  description: 'Agência criativa e cultural que conecta marcas à cultura por meio de experiências.',
+export const metadata: Metadata = {
+  title: 'Kore',
+  description: 'Kore é uma agência criativa e cultural que conecta marcas à cultura por meio de experiências físicas e digitais.',
 };
 
 const truncateText = (text: string, maxLength: number) => {

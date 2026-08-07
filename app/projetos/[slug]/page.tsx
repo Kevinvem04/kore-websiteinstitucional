@@ -3,11 +3,12 @@ import path from 'path';
 import { parseClientsCSV } from '@/lib/parseCSV';
 import { ProjectDetail } from '@/components/ui/ProjectDetail/ProjectDetail';
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next';
 
-export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   return {
-    title: `Projeto ${slug} - Asia`,
+    title: `Projeto ${slug} - Kore`,
   };
 }
 

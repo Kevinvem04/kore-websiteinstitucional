@@ -5,7 +5,7 @@ import { ProjectsGrid } from '@/components/ui/ProjectsGrid/ProjectsGrid';
 import { Client } from '@/types/client';
 
 export const metadata = {
-  title: 'Projetos - Asia',
+  title: 'Projetos - Kore',
   description: 'Conheça nossos projetos e campanhas.',
 };
 

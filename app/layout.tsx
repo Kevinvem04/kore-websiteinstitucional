@@ -10,10 +10,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Asia - Comunicação focada no que realmente importa.",
-  description: "Asia é uma agência criativa e cultural que conecta marcas à cultura por meio de experiências físicas e digitais.",
+  title: "Kore",
+  description: "Kore é uma agência de comunicação focada no que realmente importa, conectando marcas à cultura por meio de campanhas com impacto real.",
   icons: {
-    icon: "/favicon-asia.png",
+    icon: "/logokoremini_nobg.png",
   },
 };
 

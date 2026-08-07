@@ -30,6 +30,14 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
 
   return (
     <div className={styles.container}>
+      {/* Cabeçalho da Aba Projetos */}
+      <div className={styles.projectsHeader}>
+        <h1 className={styles.heroBrandText}>KORE</h1>
+        <p className={styles.headerCopy}>
+          NÃO CRIAMOS APENAS O QUE APARECE. CRIAMOS O QUE SUSTENTA.
+        </p>
+      </div>
+
       {/* Barra de Filtros */}
       <nav className={styles.filterBar}>
         <ul className={styles.filterList}>
