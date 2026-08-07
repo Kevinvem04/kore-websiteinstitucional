@@ -35,3 +35,26 @@ main {
     padding-top: 5rem;
   }
 }
+
+/* 
+  ENTRY ANIMATION (@starting-style)
+  Aplica fade-in suave sem JS quando elementos surgem no DOM.
+*/
+.page-transition {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.8s cubic-bezier(0.25, 1, 0.5, 1), transform 0.8s cubic-bezier(0.25, 1, 0.5, 1), display 0.8s allow-discrete;
+}
+
+@starting-style {
+  .page-transition {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+}
+
+/* Configuração do View Transitions (Transição de Rotas) */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.5s;
+}

@@ -10,23 +10,27 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Asia - Creative & Cultural Agency",
+  title: "Asia - Comunicação focada no que realmente importa.",
   description: "Asia é uma agência criativa e cultural que conecta marcas à cultura por meio de experiências físicas e digitais.",
   icons: {
     icon: "/favicon-asia.png",
   },
 };
 
+import { ViewTransitions } from 'next-view-transitions';
+
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${inter.variable} font-sans h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
-        <Header />
-        {children}
-      </body>
-    </html>
+    <ViewTransitions>
+      <html
+        lang="en"
+        className={`${inter.variable} font-sans h-full antialiased`}
+      >
+        <body className="min-h-full flex flex-col">
+          <Header />
+          {children}
+        </body>
+      </html>
+    </ViewTransitions>
   );
 }

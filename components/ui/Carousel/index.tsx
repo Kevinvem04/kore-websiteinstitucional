@@ -1,6 +1,6 @@
 'use client';
 import React, { useState, useEffect, useRef } from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import { Client, isSmallLayout } from '@/types/client';
 import styles from './Carousel.module.css';
 
@@ -122,8 +122,7 @@ const Root = ({
             {/* Top Fixed Area: [logo, titulo, subtitulo] */}
             <div className={styles.titleTopGroup}>
               <div className={styles.heroLogoBlock}>
-                <img src="/logokoremini_nobg.png" alt="Kore" className={styles.heroLogoImg} />
-                <span className={styles.heroBrandText}>ORE</span>
+                <span className={styles.heroBrandText}>KORE</span>
               </div>
 
               <div key={`title-${displayIndex}`} className={`${styles.animatedTextWrapper} ${isFadingOut ? styles.fadeOut : ''}`}>
@@ -261,7 +260,7 @@ const ImageProgressive = ({
             className={styles.imgOriginal}
             onLoad={() => setLoaded(true)}
           />
-          <Marquee text={marqueeText || "ASIA CREATIVE & CULTURAL AGENCY"} />
+          <Marquee text={marqueeText || "Comunicação focada no que realmente importa."} />
         </div>
       </div>
     </div>

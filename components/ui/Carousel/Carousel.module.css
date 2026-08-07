@@ -92,23 +92,16 @@
   flex-shrink: 0;
 }
 
-.heroLogoImg {
-  height: clamp(6.5rem, 22vh, 13rem);
-  width: auto;
-  object-fit: contain;
-  display: block;
-  filter: brightness(0) invert(1);
-  opacity: 1;
-}
-
 .heroBrandText {
-  letter-spacing: 0px;
-  font-size: clamp(6rem, 15vw, 12.5rem);
-  font-weight: 800;
+  letter-spacing: -0.02em; /* Um leve kerning negativo para ficar mais robusto */
+  font-size: clamp(6.5rem, 18vw, 14rem); /* Aumentado levemente para compensar a saída da imagem */
+  font-weight: 900; /* Peso Black */
   color: #ffffff;
   line-height: 1;
   text-transform: uppercase;
-  font-family: inherit;
+  margin: 0;
+  padding-bottom: 0; /* Removido padding de alinhamento com a imagem */
+  font-family: 'Arial Black', Impact, sans-serif; /* Fonte bem bold como na imagem */
 }
 
 /* Horizontal bottom line under nav header */

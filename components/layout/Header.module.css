@@ -83,7 +83,7 @@
   transform: translateY(-9.8px) rotate(-45deg);
 }
 
-/* Expanded Menu Overlay */
+/* Expanded Menu Overlay (@starting-style) */
 .menuExpanded {
   position: fixed;
   top: 0;
@@ -92,17 +92,25 @@
   height: 100vh;
   background: #ffffff;
   z-index: 98;
-  display: flex;
-  visibility: hidden;
+  display: none;
   opacity: 0;
+  transform: translateX(-20px);
   overflow-y: auto;
   overflow-x: hidden;
-  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.5s;
+  transition: opacity 0.5s cubic-bezier(0.25, 1, 0.5, 1), transform 0.5s cubic-bezier(0.25, 1, 0.5, 1), display 0.5s allow-discrete;
 }
 
 .menuExpanded.open {
-  visibility: visible;
+  display: flex;
   opacity: 1;
+  transform: translateX(0);
+}
+
+@starting-style {
+  .menuExpanded.open {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
 }
 
 .menuContainer {

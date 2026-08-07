@@ -71,6 +71,13 @@
   font-weight: 300;
 }
 
+.description p {
+  margin-bottom: 1.2rem;
+}
+.description p:last-child {
+  margin-bottom: 0;
+}
+
 .heroRight {
   width: 60.2%;
   height: 100%;
@@ -125,27 +132,99 @@
 }
 
 /* 1ª Foto: Full bleed (Ocupa as 2 colunas) */
-.galleryItem:nth-child(4n + 1) {
+div.galleryItem:nth-of-type(4n + 1) {
   grid-column: 1 / -1;
   aspect-ratio: 21 / 9;
 }
 
 /* 2ª e 3ª Foto: 50/50 (1 coluna cada, lado a lado) */
-.galleryItem:nth-child(4n + 2),
-.galleryItem:nth-child(4n + 3) {
+div.galleryItem:nth-of-type(4n + 2),
+div.galleryItem:nth-of-type(4n + 3) {
   grid-column: span 1;
   aspect-ratio: 4 / 5;
 }
 
+/* Se a 2ª ou 3ª foto for a ÚLTIMA do array, ela ocupa a largura total para não deixar buraco */
+div.galleryItem:nth-of-type(4n + 2):last-of-type,
+div.galleryItem:nth-of-type(4n + 3):last-of-type {
+  grid-column: 1 / -1;
+  aspect-ratio: 21 / 9;
+}
+
 /* 4ª Foto: Container/Centralizada (Ocupa as 2 colunas, mas tem padding) */
-.galleryItem:nth-child(4n + 4) {
+div.galleryItem:nth-of-type(4n + 4) {
   grid-column: 1 / -1;
   aspect-ratio: 16 / 9;
   padding: 0 10vw;
   background-color: transparent;
 }
-.galleryItem:nth-child(4n + 4) .galleryImage {
+div.galleryItem:nth-of-type(4n + 4) .galleryImage {
   border-radius: 4px;
+}
+
+/* Override para projetos com galeria 100% full-bleed (ex: Alvorada) */
+.fullGallery div.galleryItem,
+.fullGallery div.galleryItem:nth-of-type(4n + 1),
+.fullGallery div.galleryItem:nth-of-type(4n + 2),
+.fullGallery div.galleryItem:nth-of-type(4n + 3),
+.fullGallery div.galleryItem:nth-of-type(4n + 4) {
+  grid-column: 1 / -1;
+  aspect-ratio: auto;
+  padding: 0;
+}
+.fullGallery .galleryImage {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}
+
+/* Override para projetos com galeria Masonry (ex: Puff Dog) */
+.masonryGallery .gallery {
+  display: block; /* Remove o grid */
+  column-count: 2;
+  column-gap: 1.5rem;
+}
+.masonryGallery div.galleryItem,
+.masonryGallery div.galleryItem:nth-of-type(4n + 1),
+.masonryGallery div.galleryItem:nth-of-type(4n + 2),
+.masonryGallery div.galleryItem:nth-of-type(4n + 3),
+.masonryGallery div.galleryItem:nth-of-type(4n + 4) {
+  display: block;
+  break-inside: avoid;
+  margin-bottom: 1.5rem;
+  width: 100%;
+  aspect-ratio: auto; /* Altura natural da imagem */
+  padding: 0;
+}
+.masonryGallery .galleryImage {
+  width: 100%;
+  height: auto; /* Altura natural */
+  object-fit: cover;
+  display: block;
+}
+
+/* Text Blocks in Gallery */
+.galleryText {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 2rem;
+  color: #c0c0c0;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 300;
+  break-inside: avoid;
+}
+.galleryText p {
+  margin-bottom: 1rem;
+}
+.galleryText p:last-child {
+  margin-bottom: 0;
+}
+.galleryText strong {
+  color: #ffffff;
+  font-weight: 600;
 }
 
 /* Responsividade */
@@ -180,11 +259,11 @@
   }
   
   /* Desativa os spans de coluna no mobile */
-  .galleryItem,
-  .galleryItem:nth-child(4n + 1),
-  .galleryItem:nth-child(4n + 2),
-  .galleryItem:nth-child(4n + 3),
-  .galleryItem:nth-child(4n + 4) {
+  div.galleryItem,
+  div.galleryItem:nth-of-type(4n + 1),
+  div.galleryItem:nth-of-type(4n + 2),
+  div.galleryItem:nth-of-type(4n + 3),
+  div.galleryItem:nth-of-type(4n + 4) {
     grid-column: 1 / -1;
     padding: 0;
     aspect-ratio: 16 / 9; /* Todas com mesma proporção no mobile */

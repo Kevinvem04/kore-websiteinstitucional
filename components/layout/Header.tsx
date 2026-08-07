@@ -1,6 +1,6 @@
 'use client';
 import { useState } from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import styles from './Header.module.css';
 
 const mapa = require('../../DOCS/IMAGES/mapa.json');
@@ -31,7 +31,7 @@ export default function Header() {
         </button>
 
         <div className={styles.columnSlogan}>
-          <span>CREATIVE & CULTURAL AGENCY</span>
+          <span>Comunicação focada no que realmente importa.</span>
         </div>
 
         <div className={styles.logo}>

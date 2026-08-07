@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useMemo } from 'react';
-import Link from 'next/link';
+import { Link } from 'next-view-transitions';
 import styles from './ProjectsGrid.module.css';
 import { Client } from '@/types/client';
 
@@ -14,10 +14,7 @@ const CATEGORIES = [
   'ARTE',
   'CULTURA',
   'DESIGN',
-  'MODA',
-  'JOGOS',
   'MÚSICA',
-  'ESPORTE',
   'TECNOLOGIA'
 ];
 
@@ -65,6 +62,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 alt={project.mainImageAlt || project.name}
                 className={styles.image}
                 loading="lazy"
+                style={{ viewTransitionName: `projeto-${project.slug}` }}
               />
             </div>
             
