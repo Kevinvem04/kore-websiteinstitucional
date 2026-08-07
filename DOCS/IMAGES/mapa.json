@@ -14,32 +14,24 @@
       "label": "Novidades",
       "path": "/novidades",
       "pgActive": "pg-news"
-    },
-    {
-      "label": "Loja",
-      "path": "/loja",
-      "pgActive": "pg-store"
-    },
-    {
-      "label": "Lado B",
-      "path": "/lado-b",
-      "pgActive": "pg-b-side",
-      "locked": true
-    },
-    {
-      "label": "Cultura",
-      "path": "/cultura",
-      "pgActive": "pg-culture"
     }
   ],
   "socials": [
     {
-      "label": "Instagram",
-      "url": "https://instagram.com/..."
+      "label": "INSTAGRAM",
+      "url": "https://instagram.com/kore"
     },
     {
-      "label": "LinkedIn",
-      "url": "https://linkedin.com/..."
+      "label": "YOUTUBE",
+      "url": "https://youtube.com/kore"
+    },
+    {
+      "label": "BEHANCE",
+      "url": "https://behance.net/kore"
+    },
+    {
+      "label": "LINKEDIN",
+      "url": "https://linkedin.com/company/kore"
     }
   ]
 }

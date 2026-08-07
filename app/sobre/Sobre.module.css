@@ -1,0 +1,126 @@
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000; /* Fundo preto */
+  color: #ffffff; /* Texto claro */
+  padding-left: 5.5rem; /* Espaço do sidebar */
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  padding: 4rem 2rem 2rem 1.5rem;
+  max-width: 800px;
+}
+
+.title {
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-family: 'Arial Black', Impact, sans-serif;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 1.5vw, 1.25rem);
+  font-weight: 700;
+  color: #a0a0a0;
+  line-height: 1.4;
+}
+
+/* Masonry Layout (Baseado no ProjectDetail) */
+.masonryGallery {
+  column-count: 2;
+  column-gap: 2rem;
+  padding: 2rem;
+  width: 100%;
+}
+
+.galleryItem {
+  break-inside: avoid;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+/* Text blocks no Masonry */
+.galleryText {
+  font-size: clamp(1rem, 1.2vw, 1.4rem);
+  font-weight: 400;
+  color: #d0d0d0;
+  line-height: 1.6;
+  letter-spacing: 0;
+  padding: 1rem 0;
+}
+
+.galleryText strong {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.galleryText p {
+  margin: 0;
+}
+
+/* Images no Masonry */
+.imageWrapper {
+  width: 100%;
+  overflow: hidden;
+  background-color: #111111;
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.imageWrapper:hover .image {
+  transform: scale(1.02);
+}
+
+/* Placeholder Logo Block */
+.logoBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  padding: 2rem 0;
+}
+
+.logoText {
+  font-size: clamp(5rem, 12vw, 10rem);
+  font-weight: 900;
+  color: #ffffff; /* Letra branca no fundo preto */
+  line-height: 1;
+  text-transform: uppercase;
+  margin: 0;
+  font-family: 'Arial Black', Impact, sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .masonryGallery {
+    column-count: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 0;
+    padding-top: 5rem;
+  }
+  
+  .header {
+    padding: 2rem 1rem;
+  }
+  
+  .masonryGallery {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}

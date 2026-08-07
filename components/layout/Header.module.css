@@ -233,105 +233,201 @@
   transform: translateY(-50%);
 }
 
-/* Right Column: Social & Newsletter */
+/* Right Column: Grid Layout */
 .columnSocialMenu {
-  background: #B72221;
+  background: #000000;
   width: 39.7%;
   height: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  padding: 4vw;
+  border-left: 1px solid #333;
 }
 
-.topRow {
-  margin-bottom: 3rem;
-}
-
-.formTitle {
-  font-size: 1.2rem;
-  font-weight: 900;
-  color: #ffffff;
-  text-transform: uppercase;
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.5px;
-}
-
-.newsletterForm {
-  width: 100%;
-}
-
-.inputWrapper {
+.gridRow1 {
   display: flex;
-  border-bottom: 2px solid #ffffffea;
-  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #333;
+  flex: 1; /* Permite crescer */
+  max-height: 35%;
 }
 
-.emailInput {
+.sigaNosBlock, .idiomaBlock {
+  display: flex;
   flex: 1;
-  background: transparent;
-  border: none;
-  outline: none;
-  font-size: 1.2rem;
-  font-weight: 700;
-  color: #ffffffe8;
 }
 
-.emailInput::placeholder {
-  color: #ffffffe8;
+.idiomaBlock {
+  border-left: 1px solid #333;
 }
 
-.submitBtn {
-  background: transparent;
-  border: none;
-  font-size: 1.5rem;
-  font-weight: 900;
-  cursor: pointer;
-  color: #ffffff;
-  padding: 0 0.5rem;
-  transition: transform 0.3s ease;
+.verticalLabel {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  text-align: center;
+  padding: 1rem;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #fff;
+  border-right: 1px solid #333;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.submitBtn:hover {
-  transform: translateX(5px);
-}
-
-.bottomRow {
+.linksContainer {
   display: flex;
   flex-direction: column;
+  flex: 1;
 }
 
-.socialTitle {
-  font-size: 1rem;
-  font-weight: 900;
-  color: #ffffff;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-}
-
-.socialList {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.socialItem {
-  position: relative;
-  padding: 0.8rem 0;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-}
-
-.socialLink {
+.gridLink {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding-left: 2rem;
+  color: #fff;
   text-decoration: none;
-  color: #ffffffe8;
-  font-size: 1.3rem;
-  font-weight: 900;
-  display: block;
-  transition: transform 0.3s ease;
+  font-size: 1rem;
+  border-bottom: 1px solid #333;
+  transition: background 0.2s;
 }
 
-.socialLink:hover {
-  transform: translateX(10px);
+.gridLink:last-child {
+  border-bottom: none;
+}
+
+.gridLink:hover {
+  background: #111;
+}
+
+/* Row 2: Search */
+.gridRow2 {
+  border-bottom: 1px solid #333;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.searchIconWrapper {
+  width: 30px;
+  height: 30px;
+  color: #fff;
+}
+
+.searchIcon {
+  width: 100%;
+  height: 100%;
+}
+
+/* Row 3 & 4: Contact */
+.gridRow3 {
+  flex: 1.5; /* Espaço maior para o rodapé */
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  position: relative;
+}
+
+.helloText {
+  font-size: clamp(3rem, 5vw, 5rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+}
+
+.emailText {
+  font-size: clamp(2rem, 3.5vw, 4rem);
+  font-weight: 400;
+  color: #fff;
+  line-height: 1;
+  text-align: right;
+  margin-bottom: 2rem;
+}
+
+.gridForm {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  position: relative;
+}
+
+.formInputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  width: 70%;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.inputRow {
+  display: flex;
+  gap: 2rem;
+}
+
+.inputRow .inputGroup {
+  flex: 1;
+}
+
+.inputGroup label {
+  color: #fff;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.inputGroup input {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #333;
+  color: #fff;
+  padding: 0.5rem 0;
+  outline: none;
+  font-size: 1rem;
+}
+
+.inputGroup input:focus {
+  border-bottom-color: #fff;
+}
+
+.formFooter {
+  margin-top: auto;
+  font-size: 0.6rem;
+  color: #666;
+  letter-spacing: 1px;
+  padding-top: 2rem;
+}
+
+/* Submit Button overlapping form */
+.submitWrapper {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.gridSubmitBtn {
+  width: 150px;
+  height: 250px;
+  border-radius: 100px;
+  background: #fff;
+  color: #000;
+  border: none;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-bottom: 2rem;
+}
+
+.gridSubmitBtn:hover {
+  transform: scale(1.05);
 }
 
 /* Mobile Responsiveness */
