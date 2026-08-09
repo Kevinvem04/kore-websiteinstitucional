@@ -1,0 +1,47 @@
+/* Preloader — apenas animação de entrada do site */
+
+.preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.backgroundPanel {
+  position: absolute;
+  inset: 0;
+  background-color: #000000;
+  will-change: transform;
+  animation:
+    bgToRed 0.8s ease forwards 1s,
+    slideUp 0.8s cubic-bezier(0.77, 0, 0.175, 1) forwards 2s;
+}
+
+.logoWrapper {
+  position: relative;
+  z-index: 2;
+  width: 120px;
+  animation: logoFadeOut 0.3s ease forwards 1.8s;
+}
+
+.logoWrapper img {
+  width: 100%;
+  height: auto;
+  filter: brightness(0) invert(1);
+}
+
+@keyframes bgToRed {
+  to { background-color: #f22e18; }
+}
+
+@keyframes slideUp {
+  to { transform: translateY(-100%); }
+}
+
+@keyframes logoFadeOut {
+  to { opacity: 0; }
+}

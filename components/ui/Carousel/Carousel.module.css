@@ -75,7 +75,7 @@
   left: 39.8%;
   width: 60.2%;
   height: 4.5rem;
-  z-index: 10;
+  z-index: 30;
   display: flex;
   box-sizing: border-box;
 }
@@ -156,6 +156,7 @@
   overflow-y: auto;
   scrollbar-width: none;
   position: relative;
+  z-index: 20;
   border-right: 1px solid rgba(255, 255, 255, 0.25);
 }
 

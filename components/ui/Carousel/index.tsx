@@ -159,9 +159,9 @@ const Root = ({
                   <p className={styles.description}>{currentSlide.description}</p>
                 )}
                 {currentSlide.link && (
-                  <a href={currentSlide.link} className={styles.link}>
+                  <Link href={currentSlide.link} className={styles.link}>
                     <span>+ Ver mais</span>
-                  </a>
+                  </Link>
                 )}
               </div>
             )}
@@ -197,9 +197,9 @@ const Root = ({
                               <span className={styles.slideDate}>{slide.date}</span>
                             )}
                             {slide.link && (
-                              <a href={slide.link} className={styles.link}>
+                              <Link href={slide.link} className={styles.link}>
                                 <span>+ Ver mais</span>
-                              </a>
+                              </Link>
                             )}
                           </div>
                         </div>

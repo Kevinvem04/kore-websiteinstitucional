@@ -18,6 +18,7 @@ export const metadata: Metadata = {
 };
 
 import { ViewTransitions } from 'next-view-transitions';
+import { Preloader } from '@/components/ui/Preloader/Preloader';
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -27,6 +28,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         className={`${inter.variable} font-sans h-full antialiased`}
       >
         <body className="min-h-full flex flex-col">
+          <Preloader />
           <Header />
           {children}
         </body>
