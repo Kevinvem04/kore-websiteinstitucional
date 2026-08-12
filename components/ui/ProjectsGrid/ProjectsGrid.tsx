@@ -11,7 +11,7 @@ interface ProjectsGridProps {
 
 const CATEGORIES = [
   'TODOS',
-  'ARTE',
+  'SOCIAL',
   'CULTURA',
   'DESIGN',
   'MÚSICA',
@@ -34,7 +34,8 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
       <div className={styles.projectsHeader}>
         <h1 className={styles.heroBrandText}>KORE</h1>
         <p className={styles.headerCopy}>
-          NÃO CRIAMOS APENAS O QUE APARECE. CRIAMOS O QUE SUSTENTA.
+          NÃO CRIAMOS APENAS O QUE APARECE.<br/>
+          CRIAMOS O QUE SUSTENTA.
         </p>
       </div>
 
@@ -73,7 +74,7 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 style={{ viewTransitionName: `projeto-${project.slug}` }}
               />
             </div>
-            
+
             <div className={styles.overlay}>
               <div className={styles.overlayContent}>
                 <h2 className={styles.projectName}>{project.name}</h2>

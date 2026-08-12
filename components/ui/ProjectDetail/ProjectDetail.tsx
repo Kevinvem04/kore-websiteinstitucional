@@ -16,7 +16,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
 
   let galleryClass = '';
   if (slug === 'alvorada' || slug === 'cafe-piranga' || slug === 'sigla' || slug === 'forte-brumadinho') galleryClass = styles.fullGallery;
-  if (slug === 'puff-dog' || slug === 'avabrum' || slug === 'museu-feb' || slug === 'dr-pads') galleryClass = styles.masonryGallery;
+  if (slug === 'avabrum' || slug === 'museu-feb' || slug === 'dr-pads') galleryClass = styles.masonryGallery;
+  if (slug === 'puff-dog') galleryClass = styles.puffDogGallery;
 
   return (
     <div className={`${styles.container} ${galleryClass}`}>

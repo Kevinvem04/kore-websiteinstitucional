@@ -94,7 +94,7 @@
 
 .heroBrandText {
   letter-spacing: -0.02em; /* Um leve kerning negativo para ficar mais robusto */
-  font-size: clamp(6.5rem, 18vw, 14rem); /* Aumentado levemente para compensar a saída da imagem */
+  font-size: clamp(4.14rem, 11.48vw, 8.93rem); /* Reduzido em 25% + 15% */
   font-weight: 900; /* Peso Black */
   color: #ffffff;
   line-height: 1;
@@ -596,7 +596,7 @@
   }
 
   .heroBrandText {
-    font-size: clamp(3.2rem, 14vw, 4.8rem);
+    font-size: clamp(2.04rem, 8.93vw, 3.06rem);
   }
 
   .heroNavLink {
