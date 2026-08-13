@@ -25,39 +25,29 @@ export default function Sobre() {
 
         {/* Bloco de Texto 1 */}
         <article className={`${styles.galleryItem} ${styles.galleryText}`}>
-          <p>KORE vem de <em>core</em>: núcleo, essência. A competência central e o motivo real da sua empresa existir.</p>
+          <p>O mercado de comunicação está cheio de ruídos. Nós viemos para trazer clareza.</p>
           <br/>
-          <p>O mercado está cheio de ruído. Nós trabalhamos a ideia antes dela virar forma: mergulhamos no core da marca para construir estratégia e comunicação com direção — não decoração.</p>
+          <p>A KORE é uma agência de comunicação que atua no ecossistema 360°, mas com um diferencial crucial: calibramos a entrega para o tamanho exato da sua necessidade. Nem mais, nem menos. O equilíbrio perfeito entre estratégia e execução.</p>
         </article>
 
-        {/* Bloco de Texto 2 */}
-        <article className={`${styles.galleryItem} ${styles.galleryText}`}>
-          <p>Atuamos no ecossistema 360°, mas calibramos a entrega para o tamanho exato da sua necessidade. O equilíbrio perfeito entre estratégia e execução.</p>
-          <br/>
-          <p>Não criamos apenas o que aparece. <strong>Criamos o que sustenta.</strong></p>
-        </article>
-        
-        {/* Nova Imagem Adicionada */}
-        <div className={`${styles.galleryItem} ${styles.imageWrapper}`}>
-          <img src="/images/sobre/sobre-2.webp" alt="Kore Cultura" className={styles.image} />
+        {/* Imagem Logo (Substitui a imagem roxa) */}
+        <div className={`${styles.galleryItem} ${styles.imageWrapper} ${styles.logoBg}`}>
+          <img src="/images/sobre/logo-kore-transparent.png" alt="Logo KORE" className={styles.logoImage} />
         </div>
 
-        {/* Bloco de Texto 3 - O que entregamos */}
+        {/* Bloco de Texto 2 - O que entregamos */}
         <article className={`${styles.galleryItem} ${styles.galleryText}`}>
           <p><strong>O que entregamos:</strong></p>
-          <p>Estratégia, criação e inteligência de mídia. Produção de excelência com impacto e verdade.</p>
-          <br/>
-          <p>Formatos flexíveis para empresas privadas, órgãos públicos e suporte especializado in-house.</p>
+          <ul className={styles.bulletList}>
+            <li><strong>Estratégia, Criação & Inteligência de Mídia:</strong> Planejamento assertivo para fazer o seu investimento render onde importa.</li>
+            <li><strong>Criação & Produção de excelência:</strong> Conteúdo e campanhas que comunicam com impacto e verdade.</li>
+            <li><strong>Formatos Flexíveis:</strong> Atendimento personalizado para empresas privadas, órgãos públicos e suporte especializado para agências e marcas com operação In-House.</li>
+          </ul>
         </article>
-        
-        {/* Logo Block (Simulating Image) */}
-        <div className={`${styles.galleryItem} ${styles.logoBlock}`}>
-          <span className={styles.logoText}>KORE</span>
-        </div>
         
         {/* CTA */}
         <article className={`${styles.galleryItem} ${styles.galleryText}`}>
-          <p>Se você busca a competência central e o coração estratégico para sua marca, encontrou a KORE.</p>
+          <p>Se você busca a competência central e o coração estratégico para a sua marca, você encontrou a KORE.</p>
         </article>
 
       </div>

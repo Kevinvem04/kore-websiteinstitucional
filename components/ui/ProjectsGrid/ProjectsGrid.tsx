@@ -7,6 +7,8 @@ import { Client } from '@/types/client';
 
 interface ProjectsGridProps {
   projects: Client[];
+  title?: string;
+  subtitle?: React.ReactNode;
 }
 
 const CATEGORIES = [
@@ -18,7 +20,7 @@ const CATEGORIES = [
   'TECNOLOGIA'
 ];
 
-export function ProjectsGrid({ projects }: ProjectsGridProps) {
+export function ProjectsGrid({ projects, title, subtitle }: ProjectsGridProps) {
   const [activeCategory, setActiveCategory] = useState('TODOS');
 
 
@@ -32,10 +34,14 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
     <div className={styles.container}>
       {/* Cabeçalho da Aba Projetos */}
       <div className={styles.projectsHeader}>
-        <h1 className={styles.heroBrandText}>KORE</h1>
+        <h1 className={styles.heroBrandText}>{title || 'KORE'}</h1>
         <p className={styles.headerCopy}>
-          NÃO CRIAMOS APENAS O QUE APARECE.<br/>
-          CRIAMOS O QUE SUSTENTA.
+          {subtitle || (
+            <>
+              NÃO CRIAMOS APENAS O QUE APARECE.<br/>
+              CRIAMOS O QUE SUSTENTA.
+            </>
+          )}
         </p>
       </div>
 
@@ -71,7 +77,10 @@ export function ProjectsGrid({ projects }: ProjectsGridProps) {
                 alt={project.mainImageAlt || project.name}
                 className={styles.image}
                 loading="lazy"
-                style={{ viewTransitionName: `projeto-${project.slug}` }}
+                style={{ 
+                  viewTransitionName: `projeto-${project.slug}`,
+                  objectPosition: project.slug === 'profissionais' ? 'top center' : undefined 
+                }}
               />
             </div>
 

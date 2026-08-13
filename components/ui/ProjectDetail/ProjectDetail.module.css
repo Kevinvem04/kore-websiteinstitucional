@@ -10,7 +10,7 @@
 /* HERO SECTION */
 .hero {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -144,9 +144,8 @@ div.galleryItem:nth-of-type(4n + 3) {
   aspect-ratio: 4 / 5;
 }
 
-/* Se a 2ª ou 3ª foto for a ÚLTIMA do array, ela ocupa a largura total para não deixar buraco */
-div.galleryItem:nth-of-type(4n + 2):last-of-type,
-div.galleryItem:nth-of-type(4n + 3):last-of-type {
+/* Se a 2ª foto for a ÚLTIMA do array (tivermos só 2 fotos na linha), ela ocupa a largura total para não deixar buraco */
+div.galleryItem:nth-of-type(4n + 2):last-of-type {
   grid-column: 1 / -1;
   aspect-ratio: 21 / 9;
 }
@@ -224,6 +223,9 @@ div.galleryItem:nth-of-type(4n + 4) .galleryImage {
 }
 .puffDogGallery div.galleryItem:nth-child(1) .galleryImage {
   border-radius: 4px;
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
 }
 
 .puffDogGallery article:nth-child(2) {
@@ -246,6 +248,69 @@ div.galleryItem:nth-of-type(4n + 4) .galleryImage {
   flex-direction: column;
   justify-content: flex-start;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* VIDEO SECTION (AVABRUM) */
+.videoSection {
+  width: 100%;
+  background-color: #050505;
+  padding: 2rem 1.5rem 0 1.5rem;
+  box-sizing: border-box;
+}
+
+.videoWrapper {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  overflow: hidden;
+  border-radius: 4px;
+}
+
+.youtubeIframe {
+  position: absolute;
+  top: -5%; /* Esconde bordas residuais de controles do YouTube */
+  left: 0;
+  width: 100%;
+  height: 110%; /* Estica um pouco para forçar sumir barras */
+  border: none;
+  pointer-events: none; /* Aqui impede o clique do YT em vez do wrapper */
+}
+
+.videoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.muteButton {
+  position: absolute;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.8rem 1.5rem;
+  border-radius: 30px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.muteButton:hover {
+  background-color: rgba(255, 57, 0, 0.9);
+  border-color: #ff3900;
+  transform: scale(1.05);
 }
 
 /* Text Blocks in Gallery */
@@ -333,5 +398,13 @@ div.galleryItem:nth-of-type(4n + 4) .galleryImage {
     order: 2;
     border-right: none;
     padding: 1rem 4vw 2rem 4vw;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .subtitle {
+    font-size: 1.2rem;
   }
 }

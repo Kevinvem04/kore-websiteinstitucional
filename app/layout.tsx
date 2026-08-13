@@ -19,6 +19,7 @@ export const metadata: Metadata = {
 
 import { ViewTransitions } from 'next-view-transitions';
 import { Preloader } from '@/components/ui/Preloader/Preloader';
+import { WhatsAppButton } from '@/components/ui/WhatsAppButton/WhatsAppButton';
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <body className="min-h-full flex flex-col">
           <Preloader />
           <Header />
+          <WhatsAppButton />
           {children}
         </body>
       </html>

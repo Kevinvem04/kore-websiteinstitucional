@@ -7,10 +7,37 @@ const mapa = require('../../DOCS/IMAGES/mapa.json');
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [formStatus, setFormStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert('Obrigado por se inscrever!');
+    setFormStatus('loading');
+
+    const formData = new FormData(e.currentTarget);
+    
+    try {
+      const response = await fetch('https://formsubmit.co/ajax/rafael@korecomunicacao.com.br', {
+        method: 'POST',
+        headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          ...Object.fromEntries(formData),
+          _subject: 'Novo contato pelo site KORE!'
+        }),
+      });
+
+      if (response.ok) {
+        setFormStatus('success');
+        e.currentTarget.reset();
+        setTimeout(() => setFormStatus('idle'), 5000); // Reseta após 5 segundos
+      } else {
+        setFormStatus('error');
+      }
+    } catch (error) {
+      setFormStatus('error');
+    }
   };
 
   return (
@@ -103,30 +130,33 @@ export default function Header() {
                 <div className={styles.formInputs}>
                   <div className={styles.inputGroup}>
                     <label>NOME</label>
-                    <input type="text" />
+                    <input type="text" name="Nome" required />
                   </div>
                   <div className={styles.inputRow}>
                     <div className={styles.inputGroup}>
                       <label>E-MAIL</label>
-                      <input type="email" />
+                      <input type="email" name="Email" required />
                     </div>
                     <div className={styles.inputGroup}>
                       <label>TELEFONE</label>
-                      <input type="tel" />
+                      <input type="tel" name="Telefone" />
                     </div>
                   </div>
                   <div className={styles.inputGroup}>
                     <label>MENSAGEM</label>
-                    <input type="text" />
+                    <input type="text" name="Mensagem" required />
                   </div>
                   <div className={styles.formFooter}>
-                    DSG: PETRIKÓR | DEV: PROGRAMATÓRIO
+                    rafael@korecomunicacao.com.br
                   </div>
                 </div>
                 
                 <div className={styles.submitWrapper}>
-                  <button type="submit" className={styles.gridSubmitBtn}>
-                    ENVIAR
+                  <button type="submit" className={styles.gridSubmitBtn} disabled={formStatus === 'loading'}>
+                    {formStatus === 'loading' ? 'ENVIANDO...' : 
+                     formStatus === 'success' ? 'MENSAGEM ENVIADA!' : 
+                     formStatus === 'error' ? 'ERRO. TENTE NOVAMENTE' : 
+                     'ENVIAR'}
                   </button>
                 </div>
               </form>

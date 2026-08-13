@@ -82,24 +82,44 @@
   transform: scale(1.02);
 }
 
-/* Placeholder Logo Block */
-.logoBlock {
+.logoBg {
+  background-color: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: transparent;
-  padding: 2rem 0;
+  padding: 2rem;
 }
 
-.logoText {
-  font-size: clamp(5rem, 12vw, 10rem);
-  font-weight: 900;
-  color: #ffffff; /* Letra branca no fundo preto */
+.logoImage {
+  width: 100%;
+  height: auto;
+  max-width: 500px; /* Aumentado a pedido do cliente */
+  object-fit: contain;
+  display: block;
+}
+
+/* Lista Customizada (O que entregamos) */
+.bulletList {
+  list-style-type: none;
+  padding: 0;
+  margin: 1rem 0;
+}
+
+.bulletList li {
+  margin-bottom: 1.5rem;
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.bulletList li::before {
+  content: "•";
+  color: #ff3900;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+  font-size: 1.5rem;
   line-height: 1;
-  text-transform: uppercase;
-  margin: 0;
-  font-family: 'Arial Black', Impact, sans-serif;
-  letter-spacing: -0.02em;
+  top: -2px;
 }
 
 /* Mobile Responsiveness */

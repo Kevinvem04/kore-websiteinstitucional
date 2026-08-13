@@ -478,4 +478,46 @@
     height: auto;
     padding: 2rem 0;
   }
+
+  .menuLink {
+    font-size: 2.5rem; /* Fonte menor no celular */
+    padding-left: 2rem;
+  }
+
+  .menuLink:after {
+    left: 2rem;
+  }
+
+  .helloText {
+    font-size: 3rem;
+  }
+  
+  .emailText {
+    font-size: 1.8rem;
+    text-align: left;
+    margin-bottom: 2rem;
+  }
+
+  .inputRow {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .formInputs {
+    width: 100%;
+  }
+
+  .submitWrapper {
+    position: relative;
+    width: 100%;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-top: 2rem;
+  }
+  
+  .gridSubmitBtn {
+    width: 100%;
+    height: 60px;
+    border-radius: 8px;
+  }
 }
