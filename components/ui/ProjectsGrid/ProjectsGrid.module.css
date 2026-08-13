@@ -180,20 +180,63 @@
 @media (max-width: 768px) {
   .container {
     padding-left: 0;
-    padding-top: 0;
+    padding-top: 5rem; /* Espaço para o header fixo mobile */
   }
 
   .projectsHeader {
-    padding: 6rem 1rem 1.5rem 1rem;
+    padding: 1.5rem 1rem 1rem 1rem;
+  }
+
+  .heroBrandText {
+    font-size: 2rem;
+  }
+
+  .headerCopy {
+    font-size: 0.9rem;
   }
   
   .grid {
     grid-template-columns: 1fr;
-    padding: 1rem;
-    gap: 1rem;
+    padding: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  .card {
+    aspect-ratio: 16 / 10;
+    border-radius: 4px;
+  }
+
+  /* No mobile, sempre mostra o overlay (não existe hover em touch) */
+  .overlay {
+    opacity: 1;
+    background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 60%);
+    padding: 1.2rem;
+  }
+
+  .overlayContent {
+    transform: translateY(0);
+  }
+
+  .projectName {
+    font-size: 1.3rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .projectSubtitle {
+    font-size: 0.8rem;
   }
   
   .filterBar {
     top: 5rem;
+  }
+
+  .filterList {
+    padding-left: 1rem;
+    gap: 1.2rem;
+    height: 3rem;
+  }
+
+  .filterButton {
+    font-size: 0.75rem;
   }
 }
