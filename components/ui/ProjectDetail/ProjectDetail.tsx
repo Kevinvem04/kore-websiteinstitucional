@@ -133,7 +133,7 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
       )}
 
       {/* Gallery Section */}
-      {(gallery?.length > 0 || galleryParagraphs.length > 0) && (
+      {((gallery && gallery.length > 0) || galleryParagraphs.length > 0) && (
         <section className={styles.gallery}>
           {gallery?.map((imgUrl, idx) => (
             <React.Fragment key={idx}>
