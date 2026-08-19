@@ -11,17 +11,19 @@ interface ProjectsGridProps {
   subtitle?: React.ReactNode;
 }
 
-const CATEGORIES = [
-  'TODOS',
-  'SOCIAL',
-  'CULTURA',
-  'DESIGN',
-  'MÚSICA',
-  'TECNOLOGIA'
-];
-
 export function ProjectsGrid({ projects, title, subtitle }: ProjectsGridProps) {
   const [activeCategory, setActiveCategory] = useState('TODOS');
+
+  // Compute available categories dynamically so no filters are empty
+  const categories = useMemo(() => {
+    const cats = new Set<string>();
+    projects.forEach(p => {
+      if (p.category) {
+        cats.add(p.category.toUpperCase());
+      }
+    });
+    return ['TODOS', ...Array.from(cats).sort()];
+  }, [projects]);
 
 
   // Filtra projetos
@@ -34,7 +36,9 @@ export function ProjectsGrid({ projects, title, subtitle }: ProjectsGridProps) {
     <div className={styles.container}>
       {/* Cabeçalho da Aba Projetos */}
       <div className={styles.projectsHeader}>
-        <h1 className={styles.heroBrandText}>{title || 'KORE'}</h1>
+        <h1 className={styles.heroBrandText}>
+          {title ? title : <img src="/logo-kore-texto.webp" alt="KORE" className={styles.brandImage} />}
+        </h1>
         <p className={styles.headerCopy}>
           {subtitle || (
             <>
@@ -48,7 +52,7 @@ export function ProjectsGrid({ projects, title, subtitle }: ProjectsGridProps) {
       {/* Barra de Filtros */}
       <nav className={styles.filterBar}>
         <ul className={styles.filterList}>
-          {CATEGORIES.map(cat => (
+          {categories.map(cat => (
             <li key={cat} className={styles.filterItem}>
               <button
                 className={`${styles.filterButton} ${activeCategory === cat ? styles.active : ''}`}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Montserrat } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 
@@ -7,6 +7,12 @@ const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
   weight: ["400", "700", "900"],
+});
+
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
+  subsets: ["latin"],
+  weight: ["600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {
@@ -27,7 +33,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     <ViewTransitions>
       <html
         lang="pt-BR"
-        className={`${inter.variable} font-sans h-full antialiased`}
+        className={`${inter.variable} ${montserrat.variable} font-sans h-full antialiased`}
       >
         <body className="min-h-full flex flex-col">
           <Preloader />

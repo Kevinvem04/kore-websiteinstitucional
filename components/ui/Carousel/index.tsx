@@ -122,7 +122,9 @@ const Root = ({
             {/* Top Fixed Area: [logo, titulo, subtitulo] */}
             <div className={styles.titleTopGroup}>
               <div className={styles.heroLogoBlock}>
-                <span className={styles.heroBrandText}>KORE</span>
+                <span className={styles.heroBrandText}>
+                  <img src="/logo-kore-texto.webp" alt="KORE" className={styles.brandImage} />
+                </span>
               </div>
 
               <div key={`title-${displayIndex}`} className={`${styles.animatedTextWrapper} ${isFadingOut ? styles.fadeOut : ''}`}>

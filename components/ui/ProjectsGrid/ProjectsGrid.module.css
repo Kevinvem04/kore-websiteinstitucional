@@ -16,14 +16,22 @@
 }
 
 .heroBrandText {
-  letter-spacing: -0.02em;
-  font-size: clamp(2.5rem, 6vw, 5rem); /* Reduzido em 50% conforme solicitado */
-  font-weight: 900;
+  letter-spacing: -0.05em;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
   color: #ffffff;
   line-height: 1;
   text-transform: uppercase;
   margin: 0;
-  font-family: 'Arial Black', Impact, sans-serif;
+  font-family: var(--font-montserrat), sans-serif;
+  display: flex;
+  align-items: center;
+}
+
+.brandImage {
+  height: clamp(2.5rem, 6vw, 5rem);
+  width: auto;
+  object-fit: contain;
 }
 
 .headerCopy {

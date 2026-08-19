@@ -93,15 +93,23 @@
 }
 
 .heroBrandText {
-  letter-spacing: -0.02em; /* Um leve kerning negativo para ficar mais robusto */
+  letter-spacing: -0.05em; /* Tracking negativo igual da marca */
   font-size: clamp(4.14rem, 11.48vw, 8.93rem); /* Reduzido em 25% + 15% */
-  font-weight: 900; /* Peso Black */
+  font-weight: 700; /* Peso 700 (Bold clássico) */
   color: #ffffff;
   line-height: 1;
   text-transform: uppercase;
   margin: 0;
-  padding-bottom: 0; /* Removido padding de alinhamento com a imagem */
-  font-family: 'Arial Black', Impact, sans-serif; /* Fonte bem bold como na imagem */
+  padding-bottom: 0;
+  font-family: var(--font-montserrat), sans-serif; /* Montserrat idêntica à Averta */
+  display: flex;
+  align-items: center;
+}
+
+.brandImage {
+  height: clamp(4.14rem, 11.48vw, 8.93rem);
+  width: auto;
+  object-fit: contain;
 }
 
 /* Horizontal bottom line under nav header */
