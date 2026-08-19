@@ -31,8 +31,8 @@ main {
 
 @media (max-width: 768px) {
   main {
-    padding-left: 0;
-    padding-top: 5rem;
+    padding-left: 4rem;
+    padding-top: 0;
   }
 }
 

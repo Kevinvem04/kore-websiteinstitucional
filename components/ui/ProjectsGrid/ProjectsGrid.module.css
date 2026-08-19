@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: #000000;
-  padding-left: 5.5rem; /* Espaço para o sidebar */
+   /* Espaço para o sidebar */
   display: flex;
   flex-direction: column;
 }
@@ -179,8 +179,8 @@
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 0;
-    padding-top: 5rem; /* Espaço para o header fixo mobile */
+    
+    padding-top: 0; /* Espaço para o header fixo mobile */
   }
 
   .projectsHeader {

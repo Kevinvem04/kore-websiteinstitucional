@@ -62,15 +62,21 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
             </div>
           </div>
           <div className={styles.profRight}>
-            <img src={gallery?.[0] || ''} alt="Rafael Correia" className={styles.profImage} />
-            <span className={styles.portraitCaption}>Rafael Correia - Dir. Executivo.</span>
+            <img src={mainImage || ''} alt="Equipe KORE" className={styles.profImageLarge} />
           </div>
         </section>
       </div>
     );
   }
 
-  if (slug === 'dr-pads' || slug === 'sigla' || slug === 'avabrum' || slug === 'cafe-piranga' || slug === 'forte-brumadinho' || slug === 'meio-ambiente') {
+  let rightParagraphs: string[] = [];
+
+  if (slug === 'avabrum') {
+    const mid = Math.ceil(paragraphs.length / 2);
+    heroParagraphs = paragraphs.slice(0, mid);
+    rightParagraphs = paragraphs.slice(mid);
+    galleryParagraphs = [];
+  } else if (slug === 'dr-pads' || slug === 'sigla' || slug === 'cafe-piranga' || slug === 'forte-brumadinho' || slug === 'meio-ambiente' || slug === 'museu-feb') {
     heroParagraphs = paragraphs;
     galleryParagraphs = [];
   }
@@ -78,13 +84,16 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
   let galleryClass = '';
   if (slug === 'alvorada' || slug === 'cafe-piranga' || slug === 'sigla' || slug === 'forte-brumadinho' || slug === 'dr-pads' || slug === 'meio-ambiente') galleryClass = styles.fullGallery;
   if (slug === 'avabrum') galleryClass = styles.masonryGallery;
-  if (slug === 'puff-dog' || slug === 'museu-feb') galleryClass = styles.puffDogGallery;
+  if (slug === 'puff-dog') galleryClass = styles.puffDogGallery;
+  if (slug === 'museu-feb') galleryClass = styles.fullGallery;
+
+  const isCoverRemoved = !isNews && ['cafe-piranga', 'alvorada', 'sigla', 'forte-brumadinho'].includes(slug);
 
   return (
     <div className={`${styles.container} ${galleryClass}`}>
       {/* Hero Section */}
-      <section className={`${styles.hero} ${!isNews ? styles.heroCentered : ''}`}>
-        <div className={`${styles.heroLeft} ${!isNews ? styles.centered : ''}`}>
+      <section className={`${styles.hero} ${isCoverRemoved ? styles.heroCentered : ''}`}>
+        <div className={`${styles.heroLeft} ${isCoverRemoved ? styles.centered : ''}`}>
           <div className={styles.titleGroup}>
             <Link href="/projetos" className={styles.backButton}>
               ← VOLTAR
@@ -93,9 +102,9 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
             <h2 className={styles.subtitle}>{subtitle || marqueeText}</h2>
           </div>
           
-          <div className={`${styles.descGroup} ${!isNews ? styles.centered : ''}`}>
+          <div className={`${styles.descGroup} ${isCoverRemoved ? styles.centered : ''}`}>
             {heroParagraphs.length > 0 && (
-              <div className={`${styles.description} ${!isNews ? styles.centered : ''}`}>
+              <div className={`${styles.description} ${isCoverRemoved ? styles.centered : ''}`}>
                 {heroParagraphs.map((p, i) => (
                   <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
                 ))}
@@ -108,8 +117,8 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
           </div>
         </div>
         
-        {isNews && (
-          <div className={styles.heroRight}>
+        {!isCoverRemoved && (
+          <div className={`${styles.heroRight} ${slug === 'avabrum' ? styles.heroRightAvabrum : ''}`}>
             <div className={styles.mainImageWrapper}>
               <img 
                 src={mainImage || '/logofull1.webp'} 
@@ -118,6 +127,13 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
                 style={{ viewTransitionName: `projeto-${slug}` }}
               />
             </div>
+            {slug === 'avabrum' && rightParagraphs.length > 0 && (
+              <div className={styles.rightCopy}>
+                {rightParagraphs.map((p, i) => (
+                  <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
+                ))}
+              </div>
+            )}
           </div>
         )}
       </section>
@@ -143,11 +159,9 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
         </section>
       )}
 
-
-
-      {/* Gallery Section */}
-      {((gallery && gallery.length > 0) || galleryParagraphs.length > 0) && (
-        <section className={styles.gallery}>
+      {/* GALLERY SECTION */}
+      {(galleryParagraphs.length > 0 || (gallery && gallery.length > 0)) && (
+        <section className={`${styles.gallery} ${slug === 'puff-dog' ? styles.puffDogFix : ''}`}>
           {gallery?.map((imgUrl, idx) => {
             const isYoutube = imgUrl.includes('youtube.com') || imgUrl.includes('youtu.be');
             const isVideo = imgUrl.endsWith('.mp4');

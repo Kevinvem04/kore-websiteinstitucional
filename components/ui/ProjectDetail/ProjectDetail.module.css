@@ -2,7 +2,7 @@
   width: 100%;
   min-height: 100vh;
   background-color: #000000;
-  padding-left: 5.5rem; /* Compensa a sidebar */
+   /* Compensa a sidebar */
   display: flex;
   flex-direction: column;
 }
@@ -387,8 +387,8 @@ div.galleryItem:nth-of-type(4n + 4) .galleryImage {
 
 @media (max-width: 768px) {
   .container {
-    padding-left: 0;
-    padding-top: 5rem;
+    
+    padding-top: 0;
   }
   
   .gallery {
@@ -558,9 +558,9 @@ div.galleryItem:nth-of-type(4n + 4) .galleryImage {
   justify-content: center;
 }
 
-.profImage {
+.profImageLarge {
   width: 100%;
-  max-width: 500px;
+  max-width: 650px;
   height: auto;
   border-radius: 4px;
 }
@@ -573,5 +573,50 @@ div.galleryItem:nth-of-type(4n + 4) .galleryImage {
   .profRight {
     width: 100%;
     margin-top: 3rem;
+  }
+}
+
+
+/* Bespoke: Avabrum */
+.heroRightAvabrum {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  justify-content: flex-start;
+  padding-top: 0;
+  padding-bottom: 2rem;
+}
+.heroRightAvabrum .mainImageWrapper {
+  height: auto;
+  aspect-ratio: 16 / 10;
+  flex-shrink: 0;
+}
+.rightCopy {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #a0a0a0;
+  padding: 2.5rem 2rem 0 0;
+  font-weight: 300;
+}
+.rightCopy p {
+  margin-bottom: 1.2rem;
+}
+
+/* Bespoke: Puff Dog */
+.puffDogFix {
+  margin-top: -10vh;
+  position: relative;
+  z-index: 10;
+}
+@media (max-width: 768px) {
+  .heroRightAvabrum .mainImageWrapper {
+    height: auto;
+    aspect-ratio: 16/9;
+  }
+  .rightCopy {
+    padding: 1.5rem 0 0 0;
+  }
+  .puffDogFix {
+    margin-top: -5vh;
   }
 }

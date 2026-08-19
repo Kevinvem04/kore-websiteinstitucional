@@ -139,6 +139,24 @@ const Root = ({
               </div>
             </div>
 
+            {/* Navigation Arrows Minimalistas */}
+            <div className={styles.carouselArrows}>
+              <button 
+                className={styles.arrowBtn}
+                onClick={() => onIndexChange((activeIndex - 1 + totalSlides) % totalSlides)}
+                aria-label="Anterior"
+              >
+                &#10094;
+              </button>
+              <button 
+                className={styles.arrowBtn}
+                onClick={() => onIndexChange((activeIndex + 1) % totalSlides)}
+                aria-label="Próximo"
+              >
+                &#10095;
+              </button>
+            </div>
+
             {/* Pagination fixed statically on the left of the left column */}
             <div className={styles.notionPagination}>
               {Array.from({ length: totalSlides }).map((_, idx) => (

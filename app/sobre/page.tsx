@@ -21,6 +21,7 @@ export default function Sobre() {
         {/* Imagem do Fundador (Prioridade #1) */}
         <div className={`${styles.galleryItem} ${styles.imageWrapper}`}>
           <img src="/images/sobre/fundador.webp" alt="Rafa Correia - Sócio Fundador KORE" className={styles.image} />
+          <span className={styles.portraitCaption}>Rafael Correia - Dir. Executivo.</span>
         </div>
 
         {/* Bloco de Texto 1 */}
