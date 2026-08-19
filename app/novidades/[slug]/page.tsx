@@ -37,7 +37,7 @@ export default async function NewsPage({ params }: { params: Promise<{ slug: str
 
   return (
     <main className="page-transition">
-      <ProjectDetail project={newsItem} />
+      <ProjectDetail project={newsItem} isNews={true} />
     </main>
   );
 }

@@ -15,8 +15,14 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+.heroCentered {
+  min-height: auto;
+  border-bottom: none;
+  padding-top: 4rem;
+}
+
 .heroLeft {
-  width: 39.8%; /* Mesma proporção da home */
+  width: 39.8%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -24,6 +30,15 @@
   padding: 4rem 3vw 2rem 3vw;
   box-sizing: border-box;
   border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.heroLeft.centered {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  padding: 6rem 5vw 4rem 5vw;
+  text-align: center;
+  border-right: none;
 }
 
 .backButton {
@@ -61,14 +76,24 @@
 
 .descGroup {
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.descGroup.centered {
+  align-items: center;
 }
 
 .description {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.6;
   color: #c0c0c0;
   max-width: 90%;
   font-weight: 300;
+}
+
+.description.centered {
+  max-width: 800px;
 }
 
 .description p {
@@ -103,6 +128,8 @@
 .mainImageWrapper:hover .mainImage {
   transform: scale(1.03);
 }
+
+
 
 /* GALLERY SECTION */
 .gallery {
@@ -406,5 +433,145 @@ div.galleryItem:nth-of-type(4n + 4) .galleryImage {
 
   .subtitle {
     font-size: 1.2rem;
+  }
+}
+
+
+/* EDITORIAL LAYOUT (PROFISSIONAIS) */
+.editorialHeader {
+  width: 100%;
+  padding: 8rem 5vw 4rem 5vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.editorialIntro {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  color: #c0c0c0;
+  max-width: 800px;
+  margin-top: 2rem;
+  font-weight: 300;
+}
+
+.editorialHeroImage {
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
+.editorialHeroImage img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.editorialBody {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 5vw 8rem 5vw;
+  display: flex;
+  gap: 5vw;
+  box-sizing: border-box;
+}
+
+.editorialTextCol {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #a0a0a0;
+  font-weight: 300;
+}
+
+.editorialPortraitCol {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.editorialPortraitCol img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+.portraitCaption {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  color: #888;
+  font-weight: 300;
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .editorialBody {
+    flex-direction: column;
+  }
+  .editorialPortraitCol {
+    width: 100%;
+    max-width: 500px;
+    margin: 3rem auto 0 auto;
+  }
+}
+
+/* LAYOUT PROFISSIONAIS (SPLIT) */
+.profSplit {
+  display: flex;
+  min-height: 100vh;
+  padding: 8rem 5vw 4rem 5vw;
+  gap: 5vw;
+  box-sizing: border-box;
+  align-items: center;
+}
+
+.profLeft {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.profCopy {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #c0c0c0;
+  font-weight: 300;
+  max-width: 800px;
+}
+
+.profRight {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.profImage {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  border-radius: 4px;
+}
+
+@media (max-width: 1024px) {
+  .profSplit {
+    flex-direction: column;
+    padding-top: 6rem;
+  }
+  .profRight {
+    width: 100%;
+    margin-top: 3rem;
   }
 }

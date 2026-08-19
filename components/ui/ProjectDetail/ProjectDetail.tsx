@@ -1,5 +1,5 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styles from './ProjectDetail.module.css';
 import { Client } from '@/types/client';
 import { Link } from 'next-view-transitions';
@@ -7,9 +7,10 @@ import { AudioPlayer } from '../AudioPlayer/AudioPlayer';
 
 interface ProjectDetailProps {
   project: Client;
+  isNews?: boolean;
 }
 
-export function ProjectDetail({ project }: ProjectDetailProps) {
+export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
   const { name, subtitle, marqueeText, description, mainImage, gallery, slug } = project;
   const [isMuted, setIsMuted] = useState(true);
   
@@ -40,7 +41,36 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   let heroParagraphs = paragraphs.slice(0, 2);
   let galleryParagraphs = paragraphs.slice(2);
 
-  if (slug === 'dr-pads' || slug === 'sigla' || slug === 'avabrum' || slug === 'cafe-piranga' || slug === 'forte-brumadinho' || slug === 'profissionais' || slug === 'meio-ambiente') {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [slug]);
+
+  if (slug === 'profissionais') {
+    return (
+      <div className={styles.container}>
+        <section className={styles.profSplit}>
+          <div className={styles.profLeft}>
+            <Link href="/novidades" className={styles.backButton}>
+              ← VOLTAR
+            </Link>
+            <h1 className={styles.title}>{name}</h1>
+            <h2 className={styles.subtitle}>{subtitle}</h2>
+            <div className={styles.profCopy}>
+              {paragraphs.map((p, i) => (
+                <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
+              ))}
+            </div>
+          </div>
+          <div className={styles.profRight}>
+            <img src={gallery?.[0] || ''} alt="Rafael Correia" className={styles.profImage} />
+            <span className={styles.portraitCaption}>Rafael Correia - Dir. Executivo.</span>
+          </div>
+        </section>
+      </div>
+    );
+  }
+
+  if (slug === 'dr-pads' || slug === 'sigla' || slug === 'avabrum' || slug === 'cafe-piranga' || slug === 'forte-brumadinho' || slug === 'meio-ambiente') {
     heroParagraphs = paragraphs;
     galleryParagraphs = [];
   }
@@ -53,8 +83,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
   return (
     <div className={`${styles.container} ${galleryClass}`}>
       {/* Hero Section */}
-      <section className={styles.hero}>
-        <div className={styles.heroLeft}>
+      <section className={`${styles.hero} ${!isNews ? styles.heroCentered : ''}`}>
+        <div className={`${styles.heroLeft} ${!isNews ? styles.centered : ''}`}>
           <div className={styles.titleGroup}>
             <Link href="/projetos" className={styles.backButton}>
               ← VOLTAR
@@ -63,9 +93,9 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
             <h2 className={styles.subtitle}>{subtitle || marqueeText}</h2>
           </div>
           
-          <div className={styles.descGroup}>
+          <div className={`${styles.descGroup} ${!isNews ? styles.centered : ''}`}>
             {heroParagraphs.length > 0 && (
-              <div className={styles.description}>
+              <div className={`${styles.description} ${!isNews ? styles.centered : ''}`}>
                 {heroParagraphs.map((p, i) => (
                   <p key={i} dangerouslySetInnerHTML={{ __html: p }} />
                 ))}
@@ -78,20 +108,22 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
           </div>
         </div>
         
-        <div className={styles.heroRight}>
-          <div className={styles.mainImageWrapper}>
-            <img 
-              src={mainImage || '/logofull1.webp'} 
-              alt={name} 
-              className={styles.mainImage} 
-              style={{ viewTransitionName: `projeto-${slug}` }}
-            />
+        {isNews && (
+          <div className={styles.heroRight}>
+            <div className={styles.mainImageWrapper}>
+              <img 
+                src={mainImage || '/logofull1.webp'} 
+                alt={name} 
+                className={styles.mainImage} 
+                style={{ viewTransitionName: `projeto-${slug}` }}
+              />
+            </div>
           </div>
-        </div>
+        )}
       </section>
 
-      {/* Video Section (exclusivo AVABRUM e CAFE PIRANGA) */}
-      {(slug === 'avabrum' || slug === 'cafe-piranga') && (
+      {/* Video Section (exclusivo AVABRUM) */}
+      {slug === 'avabrum' && (
         <section className={styles.videoSection}>
           <div className={styles.videoWrapper}>
             <iframe 
@@ -111,40 +143,87 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
         </section>
       )}
 
-      {/* Video Local (exclusivo MEIO AMBIENTE) */}
-      {slug === 'meio-ambiente' && (
-        <section className={styles.videoSection}>
-          <div className={styles.videoWrapper}>
-            <video 
-              ref={videoRef}
-              src="/images/novidades/meio-ambiente/video.mp4" 
-              className={styles.youtubeIframe}
-              autoPlay
-              loop
-              muted
-              playsInline
-              style={{ objectFit: 'cover' }}
-            />
-            <button className={styles.muteButton} onClick={toggleMute} aria-label="Toggle Volume">
-              {isMuted ? '🔇 Ativar Som' : '🔊 Mudo'}
-            </button>
-          </div>
-        </section>
-      )}
+
 
       {/* Gallery Section */}
       {((gallery && gallery.length > 0) || galleryParagraphs.length > 0) && (
         <section className={styles.gallery}>
-          {gallery?.map((imgUrl, idx) => (
-            <React.Fragment key={idx}>
-              <div className={styles.galleryItem}>
-                <img 
-                  src={imgUrl} 
-                  alt={`${name} galeria ${idx + 1}`} 
-                  className={styles.galleryImage} 
-                  loading="lazy" 
-                />
-              </div>
+          {gallery?.map((imgUrl, idx) => {
+            const isYoutube = imgUrl.includes('youtube.com') || imgUrl.includes('youtu.be');
+            const isVideo = imgUrl.endsWith('.mp4');
+            const isShorts = imgUrl.includes('hRDu6w7s6Pk') || imgUrl.includes('shorts');
+            const isSmallImage = imgUrl.includes('cafeipirangasenhor');
+
+            let itemStyle: React.CSSProperties = {};
+            if (isYoutube || isVideo) {
+              if (isShorts) {
+                itemStyle = {
+                  aspectRatio: '9 / 16',
+                  maxHeight: '85vh',
+                  width: 'auto',
+                  margin: '0 auto',
+                };
+              } else {
+                itemStyle = {
+                  aspectRatio: '16 / 9',
+                  width: '100%',
+                };
+              }
+            } else if (isSmallImage) {
+              itemStyle = {
+                gridColumn: 'span 1',
+                maxWidth: '350px',
+                margin: '0 auto',
+                backgroundColor: 'transparent',
+              };
+            }
+            
+            const isRafael = imgUrl.includes('novidades/profissionais/main.webp');
+            if (isRafael) {
+              itemStyle = {
+                gridColumn: '1 / -1',
+                aspectRatio: 'auto',
+                width: '100%',
+                maxHeight: '90vh',
+                backgroundColor: 'transparent',
+              };
+            }
+
+            return (
+              <React.Fragment key={idx}>
+                <div className={styles.galleryItem} style={itemStyle}>
+                  {isYoutube ? (
+                    <iframe 
+                      src={imgUrl.includes('youtube.com/embed') ? imgUrl : `https://www.youtube.com/embed/${imgUrl.split('v=')[1]?.split('&')[0] || imgUrl.split('shorts/')[1]?.split('?')[0] || imgUrl.split('/').pop()?.split('?')[0]}`}
+                      title="YouTube video player" 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    ></iframe>
+                  ) : isVideo ? (
+                    <video 
+                      src={imgUrl}
+                      controls
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    />
+                  ) : (
+                    <div style={{ display: 'flex', flexDirection: 'column', width: '100%', height: '100%', alignItems: 'center', justifyContent: 'center' }}>
+                      <img 
+                        src={imgUrl} 
+                        alt={`${name} galeria ${idx + 1}`} 
+                        className={styles.galleryImage} 
+                        style={isRafael ? { height: '100%', maxHeight: '80vh', width: 'auto', objectFit: 'contain' } : {}}
+                        loading="lazy" 
+                      />
+                      {isRafael && (
+                        <span style={{ textAlign: 'center', marginTop: '1.5rem', color: '#c0c0c0', fontSize: '1.1rem', fontWeight: 300 }}>
+                          Rafael Correia - Dir. Executivo.
+                        </span>
+                      )}
+                    </div>
+                  )}
+                </div>
               
               {galleryParagraphs[idx] && (
                 <article className={`${styles.galleryItem} ${styles.galleryText}`}>
@@ -152,7 +231,8 @@ export function ProjectDetail({ project }: ProjectDetailProps) {
                 </article>
               )}
             </React.Fragment>
-          ))}
+            );
+          })}
           
           {/* Parágrafos restantes (se houver mais texto do que imagem) */}
           {galleryParagraphs.slice(gallery?.length || 0).map((p, idx) => (

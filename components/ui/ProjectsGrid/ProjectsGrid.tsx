@@ -78,8 +78,7 @@ export function ProjectsGrid({ projects, title, subtitle }: ProjectsGridProps) {
                 className={styles.image}
                 loading="lazy"
                 style={{ 
-                  viewTransitionName: `projeto-${project.slug}`,
-                  objectPosition: project.slug === 'profissionais' ? 'top center' : undefined 
+                  viewTransitionName: `projeto-${project.slug}`
                 }}
               />
             </div>

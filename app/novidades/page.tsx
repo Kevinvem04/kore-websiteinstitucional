@@ -5,8 +5,9 @@ import { ProjectsGrid } from '@/components/ui/ProjectsGrid/ProjectsGrid';
 import { Client } from '@/types/client';
 
 export const metadata = {
-  title: 'Novidades - Kore',
-  description: 'Fique por dentro das novidades da Kore.',
+  title: 'Novidades | Kore Comunicação',
+  description: 'Acompanhe as ações e novidades da Kore Comunicação. Atualizações sobre projetos, campanhas e o que estamos construindo ao redor do Brasil.',
+  keywords: 'Kore Comunicação, ações da Kore, campanhas, agência de comunicação BH, novidades em ia, novidades em branding',
 };
 
 export default function Novidades() {

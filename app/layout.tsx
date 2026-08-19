@@ -10,8 +10,9 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Kore",
-  description: "Kore é uma agência de comunicação focada no que realmente importa, conectando marcas à cultura por meio de campanhas com impacto real.",
+  title: "Kore Comunicação | Agência Criativa em Belo Horizonte",
+  description: "Kore é uma agência de comunicação em Belo Horizonte que une estratégia e criação com foco no que realmente importa. Campanhas com impacto real para marcas com foco em performance.",
+  keywords: "agência de comunicação, agência de publicidade, agência criativa, agência de comunicação Belo Horizonte, agência de comunicação BH, comunicação estratégica, agencia",
   icons: {
     icon: "/logokoremini_nobg.png",
   },
@@ -25,7 +26,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <ViewTransitions>
       <html
-        lang="en"
+        lang="pt-BR"
         className={`${inter.variable} font-sans h-full antialiased`}
       >
         <body className="min-h-full flex flex-col">

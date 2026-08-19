@@ -5,8 +5,9 @@ import { ProjectsGrid } from '@/components/ui/ProjectsGrid/ProjectsGrid';
 import { Client } from '@/types/client';
 
 export const metadata = {
-  title: 'Projetos - Kore',
-  description: 'Conheça nossos projetos e campanhas.',
+  title: 'Projetos | Kore Comunicação – Categorias de projetos',
+  description: 'Conheça os projetos da Kore Comunicação. Campanhas de impacto em social, cultura, design, música e tecnologia. Não criamos apenas o que aparece. Criamos o que sustenta e performa.',
+  keywords: 'projetos agência de comunicação, campanhas publicitárias, cases de comunicação, agência criativa BH, projetos de branding, campanhas de impacto',
 };
 
 export default function Projetos() {
