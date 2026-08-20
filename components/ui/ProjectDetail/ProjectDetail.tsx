@@ -87,7 +87,7 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
   if (slug === 'puff-dog') galleryClass = styles.puffDogGallery;
   if (slug === 'museu-feb') galleryClass = styles.fullGallery;
 
-  const isCoverRemoved = !isNews && ['cafe-piranga', 'alvorada', 'sigla', 'forte-brumadinho'].includes(slug);
+  const isCoverRemoved = !isNews && ['cafe-piranga', 'alvorada', 'sigla', 'forte-brumadinho', 'museu-feb'].includes(slug);
 
   return (
     <div className={`${styles.container} ${galleryClass}`}>
