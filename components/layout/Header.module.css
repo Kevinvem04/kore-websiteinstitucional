@@ -531,3 +531,54 @@
     border-radius: 8px;
   }
 }
+
+/* Landscape mobile: tela larga mas baixa */
+@media (max-height: 500px) and (orientation: landscape) {
+  .sidebarHeader {
+    width: 4rem;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 0 3rem 0;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom: none;
+  }
+
+  .logoImg {
+    width: 2rem;
+  }
+
+  .btMenu {
+    width: 22px;
+    height: 18px;
+  }
+
+  .columnSlogan {
+    display: none;
+  }
+
+  .menuExpanded {
+    top: 0;
+    left: 4rem;
+    width: calc(100vw - 4rem);
+    height: 100vh;
+  }
+
+  .menuContainer {
+    flex-direction: row;
+    height: 100%;
+    min-height: auto;
+    padding: 2rem 4vw;
+    overflow-y: auto;
+  }
+
+  .menuLink {
+    font-size: 2rem;
+    padding-left: 2rem;
+  }
+
+  .menuLink:after {
+    left: 2rem;
+  }
+}

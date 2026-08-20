@@ -36,6 +36,14 @@ main {
   }
 }
 
+/* Landscape mobile: tela larga mas baixa */
+@media (max-height: 500px) and (orientation: landscape) {
+  main {
+    padding-left: 4rem;
+    padding-top: 0;
+  }
+}
+
 /* 
   ENTRY ANIMATION (@starting-style)
   Aplica fade-in suave sem JS quando elementos surgem no DOM.
