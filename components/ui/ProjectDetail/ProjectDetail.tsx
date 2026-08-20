@@ -173,8 +173,8 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
               if (isShorts) {
                 itemStyle = {
                   aspectRatio: '9 / 16',
-                  maxHeight: '85vh',
-                  width: 'auto',
+                  width: '100%',
+                  maxWidth: '450px',
                   margin: '0 auto',
                 };
               } else {
