@@ -116,6 +116,11 @@
   max-width: 500px; /* Aumentado a pedido do cliente */
   object-fit: contain;
   display: block;
+  /* Suavizar bordas / anti-aliasing */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
+  image-rendering: high-quality;
 }
 
 /* Lista Customizada (O que entregamos) */
