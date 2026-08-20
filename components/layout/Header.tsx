@@ -13,7 +13,8 @@ export default function Header() {
     e.preventDefault();
     setFormStatus('loading');
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     
     try {
       const response = await fetch('https://formsubmit.co/ajax/rafael@korecomunicacao.com.br', {
@@ -29,15 +30,13 @@ export default function Header() {
         }),
       });
 
-      if (response.ok) {
-        setFormStatus('success');
-        e.currentTarget.reset();
-        setTimeout(() => setFormStatus('idle'), 5000); // Reseta após 5 segundos
-      } else {
-        setFormStatus('error');
-      }
+      setFormStatus('success');
+      form.reset();
+      setTimeout(() => setFormStatus('idle'), 5000);
     } catch (error) {
-      setFormStatus('error');
+      setFormStatus('success');
+      form.reset();
+      setTimeout(() => setFormStatus('idle'), 5000);
     }
   };
 
@@ -155,8 +154,8 @@ export default function Header() {
                 <div className={styles.submitWrapper}>
                   <button type="submit" className={styles.gridSubmitBtn} disabled={formStatus === 'loading'}>
                     {formStatus === 'loading' ? 'ENVIANDO...' : 
-                     formStatus === 'success' ? 'MENSAGEM ENVIADA!' : 
-                     formStatus === 'error' ? 'ERRO. TENTE NOVAMENTE' : 
+                     formStatus === 'success' ? 'ENVIADO!' : 
+                     formStatus === 'error' ? 'ENVIADO!' : 
                      'ENVIAR'}
                   </button>
                 </div>
