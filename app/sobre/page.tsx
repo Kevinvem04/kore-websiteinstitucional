@@ -37,7 +37,7 @@ export default function Sobre() {
 
         {/* Imagem Logo (Substitui a imagem roxa) */}
         <div className={`${styles.galleryItem} ${styles.imageWrapper} ${styles.logoBg}`}>
-          <img src="/images/sobre/logo-kore-transparent.png" alt="Logo KORE" className={styles.logoImage} />
+          <img src="/logofull1.webp" alt="Logo KORE" className={styles.logoImage} />
         </div>
 
         {/* Bloco de Texto 2 - O que entregamos */}
