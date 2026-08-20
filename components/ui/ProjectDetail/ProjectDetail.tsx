@@ -144,7 +144,7 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
           <div className={styles.videoWrapper}>
             <iframe 
               ref={iframeRef}
-              src={`https://www.youtube.com/embed/${slug === 'avabrum' ? '8U9vlni8Yuc' : 'sI9B9C6l8P8'}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${slug === 'avabrum' ? '8U9vlni8Yuc' : 'sI9B9C6l8P8'}&enablejsapi=1`} 
+              src={`https://www.youtube.com/embed/${slug === 'avabrum' ? '8U9vlni8Yuc' : 'sI9B9C6l8P8'}?autoplay=1&mute=1&controls=0&modestbranding=1&rel=0&loop=1&playlist=${slug === 'avabrum' ? '8U9vlni8Yuc' : 'sI9B9C6l8P8'}&enablejsapi=1&playsinline=1`} 
               title="YouTube video player" 
               frameBorder="0" 
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
@@ -210,10 +210,11 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
                 <div className={styles.galleryItem} style={itemStyle}>
                   {isYoutube ? (
                     <iframe 
-                      src={`https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0`}
+                      src={`https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0&playsinline=1`}
                       title="YouTube video player" 
                       frameBorder="0" 
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+
                       allowFullScreen
                       style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                     ></iframe>
