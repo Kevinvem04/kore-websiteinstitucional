@@ -63,7 +63,7 @@ export default function Header() {
 
         <div className={styles.logo}>
           <Link href="/" onClick={() => setIsOpen(false)} aria-label="Kore">
-            <img src="/logokoremini_nobg.png" alt="Kore" className={styles.logoImg} />
+            <img src="/logo-kore-mini.webp" alt="Kore" className={styles.logoImg} />
           </Link>
         </div>
       </header>

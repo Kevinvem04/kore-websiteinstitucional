@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   description: "Kore é uma agência de comunicação em Belo Horizonte que une estratégia e criação com foco no que realmente importa. Campanhas com impacto real para marcas com foco em performance.",
   keywords: "agência de comunicação, agência de publicidade, agência criativa, agência de comunicação Belo Horizonte, agência de comunicação BH, comunicação estratégica, agencia",
   icons: {
-    icon: "/logokoremini_nobg.png",
+    icon: "/logo-kore-mini.webp",
   },
 };
 

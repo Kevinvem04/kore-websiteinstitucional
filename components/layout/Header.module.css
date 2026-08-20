@@ -25,8 +25,6 @@
   width: 3.2rem;
   height: auto;
   display: block;
-  /* Filtro para converter preto/branco para o vermelho #B72221 */
-  filter: brightness(0) saturate(100%) invert(18%) sepia(96%) saturate(2793%) hue-rotate(347deg) brightness(96%) contrast(89%);
 }
 
 .columnSlogan {
