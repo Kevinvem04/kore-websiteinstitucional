@@ -1,3 +1,4 @@
+import { Link } from 'next-view-transitions';
 import styles from './Sobre.module.css';
 
 export const metadata = {
@@ -10,6 +11,9 @@ export default function Sobre() {
     <main className={`page-transition ${styles.container}`}>
       {/* Cabeçalho */}
       <div className={styles.header}>
+        <Link href="/" className={styles.backButton}>
+          ← VOLTAR PARA HOME
+        </Link>
         <h1 className={styles.title}>QUEM SOMOS</h1>
         <p className={styles.subtitle}>
           ANTES DA FORMA, A IDEIA. ANTES DA COMUNICAÇÃO, A ESTRATÉGIA.

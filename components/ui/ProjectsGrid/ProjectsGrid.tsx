@@ -36,6 +36,9 @@ export function ProjectsGrid({ projects, title, subtitle }: ProjectsGridProps) {
     <div className={styles.container}>
       {/* Cabeçalho da Aba Projetos */}
       <div className={styles.projectsHeader}>
+        <Link href="/" className={styles.backButton}>
+          ← VOLTAR PARA HOME
+        </Link>
         <h1 className={styles.heroBrandText}>
           {title ? title : <img src="/logo-kore-texto.webp" alt="KORE" className={styles.brandImage} />}
         </h1>

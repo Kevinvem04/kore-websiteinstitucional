@@ -24,7 +24,8 @@ export default function Header() {
         },
         body: JSON.stringify({
           ...Object.fromEntries(formData),
-          _subject: 'Novo contato pelo site KORE!'
+          _subject: 'Novo contato pelo site KORE!',
+          _captcha: 'false'
         }),
       });
 
