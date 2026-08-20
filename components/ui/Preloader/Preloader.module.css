@@ -50,8 +50,8 @@
   object-fit: contain;
   /* Multiply remove perfeitamente o branco do vídeo caso haja compressão */
   mix-blend-mode: multiply; 
-  /* Remove as bordas pretas finas do vídeo (corta 2px de cada lado) */
-  clip-path: inset(2px);
+  /* Remove as bordas pretas finas do vídeo (corta 4px de cada lado) */
+  clip-path: inset(6px);
 }
 
 @media (max-width: 768px) {

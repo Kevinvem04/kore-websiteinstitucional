@@ -203,22 +203,21 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
               };
             }
 
+            const ytId = isYoutube ? (imgUrl.includes('youtube.com/embed/') ? imgUrl.split('embed/')[1]?.split('?')[0] : imgUrl.split('v=')[1]?.split('&')[0] || imgUrl.split('shorts/')[1]?.split('?')[0] || imgUrl.split('/').pop()?.split('?')[0] || '') : '';
+
             return (
               <React.Fragment key={idx}>
                 <div className={styles.galleryItem} style={itemStyle}>
-                  {isYoutube ? (() => {
-                    const ytId = imgUrl.includes('youtube.com/embed/') ? imgUrl.split('embed/')[1]?.split('?')[0] : imgUrl.split('v=')[1]?.split('&')[0] || imgUrl.split('shorts/')[1]?.split('?')[0] || imgUrl.split('/').pop()?.split('?')[0] || '';
-                    return (
-                      <iframe 
-                        src={`https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0`}
-                        title="YouTube video player" 
-                        frameBorder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowFullScreen
-                        style={{ width: '100%', height: '100%', objectFit: 'cover', pointerEvents: 'none' }}
-                      ></iframe>
-                    );
-                  })() : isVideo ? (
+                  {isYoutube ? (
+                    <iframe 
+                      src={`https://www.youtube.com/embed/${ytId}?autoplay=1&mute=1&loop=1&playlist=${ytId}&controls=0&modestbranding=1&rel=0`}
+                      title="YouTube video player" 
+                      frameBorder="0" 
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                      allowFullScreen
+                      style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+                    ></iframe>
+                  ) : isVideo ? (
                     <video 
                       src={imgUrl}
                       autoPlay
