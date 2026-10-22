@@ -289,21 +289,26 @@
 /* Logos Institucionais Estáticos na Home (Sinapro, Fenapro, CENP) */
 .homeLogosBar {
   position: absolute;
-  right: calc(49.4% + clamp(160px, 2.2vw, 36px));
-  bottom: clamp(35px, 1.2vh, 12px);
+  /* Alinhado exatamente à esquerda junto com o texto/descrição dos projetos */
+  right: calc(60.2% + 0.8vw);
+  width: 100%;
+  max-width: 440px;
+  bottom: clamp(14px, 2vh, 26px);
   z-index: 35;
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
   pointer-events: none;
   box-sizing: border-box;
 }
 
 .homeLogosImage {
-  height: clamp(40px, 2.3vh, 25px);
+  /* Tamanho ampliado com excelente legibilidade e responsividade */
+  height: clamp(32px, 4vh, 44px);
   width: auto;
-  max-width: 480px;
+  max-width: 100%;
   object-fit: contain;
+  object-position: left center;
   opacity: 0.95;
   display: block;
 }
