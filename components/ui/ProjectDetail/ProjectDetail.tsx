@@ -76,18 +76,18 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
     heroParagraphs = paragraphs.slice(0, mid);
     rightParagraphs = paragraphs.slice(mid);
     galleryParagraphs = [];
-  } else if (slug === 'dr-pads' || slug === 'sigla' || slug === 'cafe-piranga' || slug === 'forte-brumadinho' || slug === 'meio-ambiente' || slug === 'museu-feb') {
+  } else if (slug === 'dr-pads' || slug === 'sigla' || slug === 'cafe-piranga' || slug === 'forte-brumadinho' || slug === 'meio-ambiente' || slug === 'museu-feb' || slug === 'grupo-leva') {
     heroParagraphs = paragraphs;
     galleryParagraphs = [];
   }
 
   let galleryClass = '';
-  if (slug === 'alvorada' || slug === 'cafe-piranga' || slug === 'sigla' || slug === 'forte-brumadinho' || slug === 'dr-pads' || slug === 'meio-ambiente') galleryClass = styles.fullGallery;
+  if (slug === 'alvorada' || slug === 'cafe-piranga' || slug === 'sigla' || slug === 'forte-brumadinho' || slug === 'dr-pads' || slug === 'meio-ambiente' || slug === 'grupo-leva') galleryClass = styles.fullGallery;
   if (slug === 'avabrum') galleryClass = styles.masonryGallery;
   if (slug === 'puff-dog') galleryClass = styles.puffDogGallery;
   if (slug === 'museu-feb') galleryClass = styles.fullGallery;
 
-  const isCoverRemoved = !isNews && ['cafe-piranga', 'alvorada', 'sigla', 'forte-brumadinho', 'museu-feb'].includes(slug);
+  const isCoverRemoved = (!isNews && ['cafe-piranga', 'alvorada', 'sigla', 'forte-brumadinho', 'museu-feb'].includes(slug)) || slug === 'grupo-leva';
 
   return (
     <div className={`${styles.container} ${galleryClass}`}>
@@ -95,7 +95,7 @@ export function ProjectDetail({ project, isNews = false }: ProjectDetailProps) {
       <section className={`${styles.hero} ${isCoverRemoved ? styles.heroCentered : ''}`}>
         <div className={`${styles.heroLeft} ${isCoverRemoved ? styles.centered : ''}`}>
           <div className={styles.titleGroup}>
-            <Link href="/projetos" className={styles.backButton}>
+            <Link href={isNews ? "/novidades" : "/projetos"} className={styles.backButton}>
               ← VOLTAR
             </Link>
             <h1 className={styles.title}>{name}</h1>

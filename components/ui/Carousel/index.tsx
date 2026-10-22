@@ -174,7 +174,10 @@ const Root = ({
 
             {/* Bottom Area: [descrição, link] (Rendered on the left for Big/Horizontal layout) */}
             {!isSmall && (
-              <div key={`desc-${displayIndex}`} className={`${styles.descriptionWrapper} ${isFadingOut ? styles.fadeOut : ''}`}>
+              <div 
+                key={`desc-${displayIndex}`} 
+                className={`${styles.descriptionWrapper} ${currentSlide.slug === 'cafe-piranga' ? styles.cafePirangaDesc : ''} ${isFadingOut ? styles.fadeOut : ''}`}
+              >
                 {currentSlide.description && (
                   <p className={styles.description}>{currentSlide.description}</p>
                 )}
@@ -238,6 +241,15 @@ const Root = ({
               })}
             </div>
           </div>
+        </div>
+
+        {/* Logos Institucionais Estáticos (Sinapro, Fenapro, CENP) */}
+        <div className={styles.homeLogosBar} aria-hidden="true">
+          <img
+            src="/novaimageshome/logoshome.png"
+            alt="Sinapro MG | Fenapro | CENP"
+            className={styles.homeLogosImage}
+          />
         </div>
       </div>
     </div>
