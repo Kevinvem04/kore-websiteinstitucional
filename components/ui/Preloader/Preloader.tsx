@@ -1,11 +1,21 @@
 'use client';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import styles from './Preloader.module.css';
 
 export function Preloader() {
   const [phase, setPhase] = useState<'playing' | 'wiping' | 'sliding' | 'done'>('playing');
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   useEffect(() => {
+    // Força muted a nível de DOM antes de dar play (exigência estrita do Safari/iOS)
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      videoRef.current.defaultMuted = true;
+      videoRef.current.play().catch(() => {
+        // Se o iOS estiver em Modo de Pouca Energia e bloquear o play, não trava a tela
+      });
+    }
+
     // 1. Aos 3.0s, a barra vermelha começa a subir e cobre o vídeo
     const wipeTimer = setTimeout(() => {
       setPhase('wiping');
@@ -37,10 +47,14 @@ export function Preloader() {
       
       <div className={styles.videoWrapper}>
         <video 
+          ref={videoRef}
           src="/preloader-animation.mp4" 
           autoPlay 
           muted 
           playsInline 
+          preload="auto"
+          controls={false}
+          disablePictureInPicture
           className={styles.videoPlayer}
         />
       </div>
